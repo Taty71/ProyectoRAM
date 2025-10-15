@@ -15,7 +15,25 @@ router.get('/:id/ciclos-especialidades', async (req, res) => {
     res.status(500).json({ error: 'Error al obtener ciclos y especialidades' });
   }
 });
+// Obtener institución activa
+router.get('/activa', async (req, res) => {
+  try {
+    const institucion = await Institucion.findOne({ activa: true });
+    
+    if (!institucion) {
+      return res.status(404).json({ 
+        error: 'No hay institución activa configurada' 
+      });
+    }
 
+    res.json({ institucion });
+  } catch (error) {
+    console.error('Error obteniendo institución activa:', error);
+    res.status(500).json({ 
+      error: 'Error al obtener institución activa' 
+    });
+  }
+});
 // Crear nueva institución
 router.post('/', [
   body('nombre').notEmpty().trim().escape(),

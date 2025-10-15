@@ -1,0 +1,108 @@
+/* Banner elegante y delicado para mostrar nombre de institución */
+.institucion-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: slideDown 0.6s ease-out;
+}
+
+.institucion-banner-contenido {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(174, 230, 202, 0.9) 100%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(41, 128, 185, 0.3);
+  border-radius: 30px;
+  padding: 0.8rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  box-shadow: 
+    0 4px 20px rgba(41, 128, 185, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.institucion-banner-contenido:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 25px rgba(41, 128, 185, 0.25),
+    0 3px 12px rgba(0, 0, 0, 0.15);
+}
+
+.institucion-banner-icono {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.institucion-banner-texto {
+  font-family: 'Segoe UI', 'Georgia', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Animación de entrada */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .institucion-banner {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    transform: none;
+  }
+
+  .institucion-banner-contenido {
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    justify-content: center;
+  }
+
+  .institucion-banner-icono {
+    font-size: 1.2rem;
+  }
+
+  .institucion-banner-texto {
+    font-size: 0.95rem;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .institucion-banner-contenido {
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .institucion-banner-icono {
+    font-size: 1rem;
+  }
+
+  .institucion-banner-texto {
+    font-size: 0.85rem;
+  }
+}

@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
 import { administradorSchema } from "../utils/validatorYup";
 import NotificationManager from "../utils/NotificationManager";
-import InstitucionBanner from "../componentes/Institucion_Banner";
+import SelectInstitucion from "../componentes/SelectInstitucion";
 import "../estilos/colores.css";
 import "../estilos/registro.css";
 
-function Registro({ setPantalla, institucionId, institucionNombre: institucionNombreProp }) {
+
+function Registro({ setPantalla, institucionId, institucionNombre }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nombre, setNombre] = useState("");
@@ -15,33 +16,14 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
   const [rol, setRol] = useState("");
   const [notif, setNotif] = useState({ error: null, mensaje: "" });
   const [mostrarSolicitud, setMostrarSolicitud] = useState(false);
-  const [institucionNombre, setInstitucionNombre] = useState(institucionNombreProp || "");
-  
+  // ErrorHandler hook
   const { error, clearError, handleAsync, setValidationError, formatError } = useErrorHandler();
-
-  useEffect(() => {
-    async function fetchInstitucion() {
-      const storedId = institucionId || localStorage.getItem("institucionId");
-      if (!storedId) return;
-      try {
-        const res = await fetch(`http://localhost:3000/api/instituciones/${storedId}`);
-        const data = await res.json();
-        if (res.ok && data.institucion && data.institucion.nombre) {
-          setInstitucionNombre(data.institucion.nombre);
-        }
-      } catch (err) {
-        console.error("Error al obtener institución:", err);
-      }
-    }
-    if (!institucionNombre) {
-      fetchInstitucion();
-    }
-  }, [institucionId, institucionNombre]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     clearError();
     setNotif({ error: null, mensaje: "" });
+    // Validar con Yup
     try {
       await administradorSchema.validate({ nombre, apellido, email, password, confirmarPassword: password, dni: "12345678", rol });
     } catch (validationError) {
@@ -101,7 +83,6 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
 
   return (
     <div className="registro-container">
-      <InstitucionBanner nombreInstitucion={institucionNombre} />
       <h2>Registro de usuario</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -119,7 +100,7 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
           required
         />
         <input
-          type="text"
+            // ...existing code...
           placeholder="Nombre"
           value={nombre}
           onChange={e => setNombre(e.target.value)}
@@ -158,6 +139,11 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         >
           {mostrarSolicitud ? "Ocultar solicitud de código" : "Solicitar código de invitación"}
         </button>
+        {institucionNombre && (
+          <div style={{ margin: "1rem 0", fontWeight: "bold", color: "#2980b9" }}>
+            Institución: {institucionNombre}
+          </div>
+        )}
         <button type="submit">Registrarse</button>
         <button type="button" className="registro-link" onClick={() => setPantalla("login")}>Volver al login</button>
       </form>
@@ -197,6 +183,11 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
               required
               style={{ marginBottom: "0.5rem", background: '#eaeaea', fontWeight: 'bold' }}
             />
+            {institucionNombre && (
+              <div style={{ marginBottom: "0.5rem", fontWeight: "bold", color: "#2980b9" }}>
+                Institución: {institucionNombre}
+              </div>
+            )}
             <button type="submit" className="registro-link" style={{ marginTop: "0.5rem" }}>Enviar solicitud</button>
           </form>
         </div>

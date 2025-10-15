@@ -50,7 +50,50 @@ function App() {
 
     verificarSetup();
   }, []);
+  // Agregar después de verificarSetup (línea 52)
+useEffect(() => {
+  const verificarSetup = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/setup/verificar");
+      const data = await res.json();
+      
+      if (res.ok) {
+        setNecesitaSetup(data.necesitaSetup);
+        if (data.necesitaSetup) {
+          setPantalla("setup");
+        } else {
+          // AGREGAR ESTA PARTE: Cargar institución activa
+          await cargarInstitucionActiva();
+          setPantalla("presentacion");
+        }
+      } else {
+        setNecesitaSetup(true);
+        setPantalla("setup");
+      }
+    } catch (error) {
+      console.error("Error verificando setup:", error);
+      setPantalla("presentacion");
+    }
+  };
 
+  // NUEVA FUNCIÓN: Cargar institución activa
+  const cargarInstitucionActiva = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/api/instituciones/activa");
+        const data = await res.json();
+        
+        if (res.ok && data.institucion) {
+          localStorage.setItem("institucionId", data.institucion._id);
+          localStorage.setItem("institucionNombre", data.institucion.nombre);
+          console.log("Institución cargada:", data.institucion.nombre);
+        }
+      } catch (error) {
+        console.error("Error cargando institución:", error);
+      }
+    };
+
+    verificarSetup();
+  }, []);
   // Función para manejar login exitoso
   const handleLogin = (rol, token, nombre) => {
     localStorage.setItem("token", token);

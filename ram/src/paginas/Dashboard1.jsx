@@ -4,12 +4,14 @@ import GestionCodigosInvitacion from "../componentes/GestionCodigosInvitacion";
 import InformesEstadisticos from "../componentes/InformesEstadisticos";
 import ListaUsuarios from "../componentes/ListaUsuarios";
 import ModalVentana from "../componentes/ModalVentana";
-import InstitucionBanner from "../componentes/Institucion_Banner";
 import "../estilos/colores.css";
 import "../estilos/dashboard.css";
 import logo from "../assets/logo-ram.png";
 
 function Dashboard({ setPantalla }) {
+	// Recibe setPantalla como prop para navegación
+
+	// Función para cerrar sesión
 	const handleLogout = () => {
 		localStorage.clear();
 		setPantalla && setPantalla("login");
@@ -17,13 +19,15 @@ function Dashboard({ setPantalla }) {
 
 	const [institucionId] = React.useState(() => localStorage.getItem("institucionId") || "");
 	const [institucionNombre, setInstitucionNombre] = React.useState("");
-
+	// Obtener nombre de la institución por id
 	React.useEffect(() => {
 		async function fetchNombre() {
+			console.log("InstitucionId en localStorage:", institucionId);
 			if (!institucionId) return setInstitucionNombre("");
 			try {
 				const res = await fetch(`http://localhost:3000/api/instituciones/${institucionId}`);
 				const data = await res.json();
+				console.log("Respuesta API institucion:", data);
 				if (res.ok && data.institucion && data.institucion.nombre) {
 					setInstitucionNombre(data.institucion.nombre);
 				} else {
@@ -37,6 +41,7 @@ function Dashboard({ setPantalla }) {
 		fetchNombre();
 	}, [institucionId]);
 
+	// Obtener nombre y rol del usuario logueado
 	const nombre = localStorage.getItem("nombre") || "Administrador";
 	const rol = localStorage.getItem("rol") || "admin";
 
@@ -44,7 +49,6 @@ function Dashboard({ setPantalla }) {
 
 	return (
 		<div className="dashboard-container">
-			<InstitucionBanner nombreInstitucion={institucionNombre} />
 			<button className="logout-btn" onClick={handleLogout} title="Cerrar sesión">
 				&#x2716; Cerrar sesión
 			</button>
@@ -53,6 +57,11 @@ function Dashboard({ setPantalla }) {
 			<p className="slogan">Gestión de solicitudes y códigos de invitación</p>
 			<div className="dashboard-bienvenida">
 				<span>Bienvenido/a, <strong>{nombre}</strong> ({rol})</span>
+				{institucionNombre && (
+					<div style={{ marginTop: '0.5rem', fontWeight: 'bold', color: '#2980b9', fontSize: '1.1rem', background: 'rgba(255,255,255,0.7)', borderRadius: '6px', padding: '0.3rem 0.8rem', display: 'inline-block' }}>
+						Institución: {institucionNombre}
+					</div>
+				)}
 			</div>
 			<div className="dashboard-admin-btns">
 				<button className="dashboard-admin-btn" onClick={() => setModal("usuarios")}>👥 Ver usuarios registrados</button>
@@ -76,12 +85,15 @@ function Dashboard({ setPantalla }) {
 				<InformesEstadisticos rol="administrador" />
 			</ModalVentana>
 			<ModalVentana open={modal === "profesores"} onClose={() => setModal("")} titulo="Gestión de profesores">
+				{/* Aquí va el componente de gestión de profesores */}
 				<p>Gestión de profesores (en desarrollo)</p>
 			</ModalVentana>
 			<ModalVentana open={modal === "trabajos"} onClose={() => setModal("")} titulo="Trabajos Prácticos Evaluativos">
+				{/* Aquí va el componente de trabajos prácticos evaluativos */}
 				<p>Trabajos prácticos evaluativos (en desarrollo)</p>
 			</ModalVentana>
 			<ModalVentana open={modal === "estudiantes"} onClose={() => setModal("")} titulo="Gestión de estudiantes">
+				{/* Aquí va el componente de gestión de estudiantes */}
 				<p>Gestión de estudiantes (en desarrollo)</p>
 			</ModalVentana>
 		</div>

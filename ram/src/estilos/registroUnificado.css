@@ -1,0 +1,319 @@
+/* Estilos para Registro Unificado */
+.registro-unificado-container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.registro-unificado-titulo {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Progress indicator */
+.registro-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.registro-progress::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+  width: 100px;
+  margin-left: -50px;
+}
+
+.registro-paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.registro-paso-numero {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.registro-paso.activo .registro-paso-numero {
+  background: #2980b9;
+  color: white;
+}
+
+.registro-paso-texto {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+}
+
+.registro-paso.activo .registro-paso-texto {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+/* Form styles */
+.registro-form {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.registro-form h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.codigo-info {
+  text-align: center;
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+}
+
+.registro-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.registro-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.registro-form input,
+.registro-form select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  transition: border-color 0.3s ease;
+  background: white;
+}
+
+.registro-form input:focus,
+.registro-form select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+
+.registro-form input:required,
+.registro-form select:required {
+  border-left: 3px solid #e74c3c;
+}
+
+.registro-form input:required:valid,
+.registro-form select:required:valid {
+  border-left: 3px solid #27ae60;
+}
+
+/* Sección de materias */
+.materias-section {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.materias-section > label {
+  font-weight: bold;
+  color: #2980b9;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.materias-info {
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 1rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.materia-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: end;
+}
+
+.btn-eliminar-materia {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-eliminar-materia:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.btn-agregar-materia {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-agregar-materia:hover {
+  background: #219a52;
+  transform: translateY(-1px);
+}
+
+/* Buttons */
+.registro-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.registro-btn-primary,
+.registro-btn-secondary {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.registro-btn-primary {
+  background: #2980b9;
+  color: white;
+}
+
+.registro-btn-primary:hover:not(:disabled) {
+  background: #3498db;
+  transform: translateY(-1px);
+}
+
+.registro-btn-primary:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.registro-btn-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.registro-btn-secondary:hover {
+  background: #7f8c8d;
+  transform: translateY(-1px);
+}
+
+/* Messages */
+.registro-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #ffcdd2;
+  white-space: pre-line;
+}
+
+.registro-mensaje {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .registro-unificado-container {
+    padding: 1rem;
+  }
+
+  .registro-form {
+    padding: 1.5rem;
+  }
+
+  .registro-row {
+    grid-template-columns: 1fr;
+  }
+
+  .materia-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .btn-eliminar-materia {
+    justify-self: center;
+    margin-top: 0.5rem;
+  }
+
+  .registro-buttons {
+    flex-direction: column;
+  }
+
+  .registro-progress {
+    margin-bottom: 1.5rem;
+  }
+
+  .registro-paso {
+    margin: 0 1rem;
+  }
+}

@@ -1,0 +1,443 @@
+/* Unificar estilos de selects y botón agregar especialidad con los inputs */
+.setup-input-select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  transition: border-color 0.3s ease;
+  border-left: 3px solid #e74c3c;
+}
+.setup-input-select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+.setup-input-select:required:valid {
+  border-left: 3px solid #27ae60;
+}
+.setup-input-nueva-especialidad {
+  border-left: 3px solid #e74c3c;
+}
+.setup-input-nueva-especialidad:valid {
+  border-left: 3px solid #27ae60;
+}
+/* Selects y campos destacados para tipo de institución y especialidad/orientación */
+.setup-label-select {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.setup-select-wrapper {
+  margin-top: 0.25rem;
+  background: #f0f7ff;
+  border-radius: 6px;
+  border: 1px solid #d1ecf1;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.setup-select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #2980b9;
+  font-size: 1rem;
+  background: #fff;
+  color: #2c3e50;
+  transition: border-color 0.3s;
+}
+.setup-select:focus {
+  border-color: #764ba2;
+  outline: none;
+}
+
+.setup-nueva-especialidad-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  align-items: center;
+}
+
+.setup-input-nueva-especialidad {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+}
+
+.setup-btn-agregar {
+  background: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.setup-btn-agregar:hover {
+  background: #219150;
+}
+/* Estilos para Setup Inicial */
+.setup-inicial-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+}
+
+.setup-inicial-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.setup-inicial-titulo {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Progress indicator */
+.setup-inicial-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.setup-inicial-progress::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  right: 50%;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+  width: 100px;
+  margin-left: -50px;
+}
+
+.setup-paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.setup-paso-numero {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.setup-paso.activo .setup-paso-numero {
+  background: #2980b9;
+  color: white;
+}
+
+.setup-paso-texto {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.setup-paso.activo .setup-paso-texto {
+  color: #2980b9;
+  font-weight: bold;
+}
+
+/* Form styles */
+.setup-form {
+  margin-top: 2rem;
+}
+
+.setup-form h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.setup-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.setup-row:last-child {
+  grid-template-columns: 1fr;
+}
+
+.setup-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.setup-form input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  transition: border-color 0.3s ease;
+}
+
+.setup-form input:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+
+.setup-form input:required {
+  border-left: 3px solid #e74c3c;
+}
+
+.setup-form input:required:valid {
+  border-left: 3px solid #27ae60;
+}
+
+/* Buttons */
+.setup-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.setup-btn-primary,
+.setup-btn-secondary {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.setup-btn-primary {
+  background: #2980b9;
+  color: white;
+}
+
+.setup-btn-primary:hover:not(:disabled) {
+  background: #3498db;
+  transform: translateY(-1px);
+}
+
+.setup-btn-primary:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.setup-btn-secondary {
+  background: #95a5a6;
+  color: white;
+}
+
+.setup-btn-secondary:hover {
+  background: #7f8c8d;
+  transform: translateY(-1px);
+}
+
+/* Messages */
+.setup-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #ffcdd2;
+}
+
+.setup-error-text {
+  color: #c62828;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.setup-mensaje {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #c8e6c9;
+}
+
+/* Especialidades */
+.setup-especialidades-label {
+  grid-column: 1 / -1;
+}
+
+.setup-especialidades-container {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f8f9fa;
+}
+
+.setup-especialidad-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.setup-especialidad-row:last-child {
+  margin-bottom: 0;
+}
+
+.setup-especialidad-checkbox {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.setup-especialidad-checkbox input[type="checkbox"] {
+  margin: 0 !important;
+  width: auto;
+  height: auto;
+}
+
+.setup-años-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1.5rem;
+  padding: 0.5rem;
+  background: #f0f7ff;
+  border-radius: 4px;
+  border: 1px solid #d1ecf1;
+}
+
+.setup-años-label {
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: 500;
+  min-width: 40px;
+}
+
+.setup-año-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #495057;
+}
+
+.setup-año-item input[type="checkbox"] {
+  margin: 0 !important;
+  width: auto;
+  height: auto;
+  transform: scale(0.9);
+}
+
+.setup-especialidades-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f8f9fa;
+}
+
+.setup-especialidad-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.setup-especialidad-item:hover {
+  background: #f0f7ff;
+  border-color: #2980b9;
+}
+
+.setup-especialidad-item input[type="checkbox"] {
+  margin: 0 !important;
+  width: auto;
+  height: auto;
+}
+
+.setup-especialidad-item span {
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: normal;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .setup-inicial-card {
+    padding: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .setup-row {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-buttons {
+    flex-direction: column;
+  }
+
+  .setup-inicial-progress {
+    margin-bottom: 1.5rem;
+  }
+
+  .setup-paso {
+    margin: 0 1rem;
+  }
+}

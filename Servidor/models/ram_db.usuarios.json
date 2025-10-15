@@ -1,0 +1,146 @@
+[{
+  "_id": {
+    "$oid": "68afb6eed2539da4937cf661"
+  },
+  "email": "crisbmaia50@gmail.com",
+  "password": "$2a$10$Qhz.oAkQyaflFxXNzIIBXueL2lk9rrqkMe0EzVuUuiHh396odanna",
+  "rol": "administrador",
+  "nombre": "Administrador",
+  "apellido": "Sistema",
+  "dni": "12345678",
+  "institucion": {
+    "$oid": "68b5139443ff80b025d79ae4"
+  },
+  "especialidades": [],
+  "materias": [],
+  "permisos": {
+    "verReportes": true,
+    "gestionarUsuarios": true,
+    "exportarDatos": true
+  },
+  "activo": true,
+  "cursosACargo": [],
+  "fechaIngreso": {
+    "$date": "2025-08-28T01:54:54.027Z"
+  },
+  "ultimoAcceso": {
+    "$date": "2025-09-19T00:02:12.467Z"
+  },
+  "createdAt": {
+    "$date": "2025-08-28T01:54:54.029Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-19T00:02:12.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68b517b743ff80b025d79af7"
+  },
+  "email": "crisbmaiaprofe@gmail.com",
+  "password": "$2a$10$NuH/qMKL4v9p/LLMAzJmyurKlu5uRN2I7tgR.u4IeVJIMb9C5SF0.",
+  "rol": "profesor",
+  "nombre": "Cristina Beatriz",
+  "apellido": "Maia",
+  "dni": "23230230",
+  "institucion": {
+    "$oid": "68b5139443ff80b025d79ae4"
+  },
+  "especialidades": [
+    "Programación"
+  ],
+  "materias": [],
+  "permisos": {
+    "verReportes": false,
+    "gestionarUsuarios": false,
+    "exportarDatos": false
+  },
+  "activo": true,
+  "cursosACargo": [],
+  "fechaIngreso": {
+    "$date": "2025-09-01T03:49:11.669Z"
+  },
+  "ultimoAcceso": {
+    "$date": "2025-09-01T03:49:11.669Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-01T03:49:11.671Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-01T03:49:11.671Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c0ef4cf98e0890517fce04"
+  },
+  "email": "marielae@gmail.com",
+  "password": "$2a$10$eZWVgP0XaqZfoBEfwwzji.LGsKAKSWiCnuP1jbwqQ/CaQZUC5PM66",
+  "rol": "profesor",
+  "nombre": "Mariela",
+  "apellido": "Espino",
+  "dni": "32023633",
+  "institucion": {
+    "$oid": "68b5139443ff80b025d79ae4"
+  },
+  "especialidades": [],
+  "materias": [],
+  "permisos": {
+    "verReportes": false,
+    "gestionarUsuarios": false,
+    "exportarDatos": false
+  },
+  "activo": true,
+  "cursosACargo": [],
+  "fechaIngreso": {
+    "$date": "2025-09-10T03:23:56.101Z"
+  },
+  "ultimoAcceso": {
+    "$date": "2025-09-10T03:23:56.101Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-10T03:23:56.102Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T03:23:56.102Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68c1667e8533fa7e014e8d2b"
+  },
+  "email": "sofia@gmail.com",
+  "password": "$2a$10$5gUThJR95h6ZkRkefFLnDeUOpSg6U4b4wBtvZHp61.EloGqQ/l8a6",
+  "rol": "profesor",
+  "nombre": "Sofia",
+  "apellido": "Carras",
+  "dni": "12562321",
+  "institucion": {
+    "$oid": "68b5139443ff80b025d79ae4"
+  },
+  "especialidades": [],
+  "materias": [],
+  "permisos": {
+    "verReportes": false,
+    "gestionarUsuarios": false,
+    "exportarDatos": false
+  },
+  "activo": true,
+  "cursosACargo": [],
+  "fechaIngreso": {
+    "$date": "2025-09-10T11:52:30.343Z"
+  },
+  "ultimoAcceso": {
+    "$date": "2025-09-10T11:52:30.343Z"
+  },
+  "createdAt": {
+    "$date": "2025-09-10T11:52:30.345Z"
+  },
+  "updatedAt": {
+    "$date": "2025-09-10T11:52:30.345Z"
+  },
+  "__v": 0
+}]

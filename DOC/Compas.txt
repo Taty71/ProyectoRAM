@@ -1,0 +1,97 @@
+🚀 Paso 1: Conectar a la Base de Datos
+1.1 Abrir MongoDB Compass
+Busca "MongoDB Compass" en tu computadora
+Abre la aplicación
+1.2 Conectar al servidor local
+Conexión: mongodb://localhost:27017
+En la pantalla principal:
+
+En el campo "URI" escribe: mongodb://localhost:27017
+Click en "Connect"
+🔍 Paso 2: Verificar que MongoDB esté corriendo
+Si ves error de conexión:
+# En terminal, asegúrate de que MongoDB esté corriendo:
+# Opción 1: Si tienes MongoDB local
+mongod
+
+# Opción 2: Si usas MongoDB como servicio
+net start MongoDB
+Si la conexión es exitosa, verás:
+
+Lista de bases de datos en el panel izquierdo
+Posiblemente admin, config, local (bases por defecto)
+📊 Paso 3: Buscar tu base de datos del proyecto
+3.1 Si ya ejecutaste el servidor al menos una vez:
+Deberías ver una base de datos llamada ram_db
+Click en ram_db para expandirla
+3.2 Si NO ves ram_db:
+Significa que aún no has ejecutado el servidor. Haz esto:
+# En terminal:
+cd d:\ProyectoRAM\Servidor
+npm run dev
+uego en Compass, refresca (F5) y aparecerá ram_db.
+En la terminal
+Base de datos MongoDB conectada exitosamente
+🔗 URI: mongodb://127.0.0.1:27017/ram_db
+
+🔗 URI: mongodb://127.0.0.1:27017/ram_db
+🔗 URI: mongodb://127.0.0.1:27017/ram_db
+🏗️ Paso 4: Explorar las Colecciones
+Una vez conectado a ram_db, verás las colecciones:
+
+Si ejecutaste npm run init:
+Cómo usar Compass efectivamente
+1. Explorar colecciones:
+Click en estudiantes para ver todos los estudiantes
+Click en usuarios para ver profesores y administradores
+2. Filtrar datos:
+En el campo "Filter" puedes usar:
+
+// Estudiantes de 4to año
+{ "año": 4 }
+
+// Estudiantes de electricidad
+{ "especialidad": "electricidad" }
+
+// Usuarios administradores
+{ "rol": "administrador" }
+
+3. Ver esquema de datos:
+Click en la pestaña "Schema" de cualquier colección
+Te muestra la estructura de los documentos
+4. Agregar datos manualmente:
+Click "INSERT DOCUMENT"
+Pega JSON de ejemplo
+5. Editar documentos:
+Click en el ícono de editar (✏️) en cualquier documento
+Modifica campos
+Click "UPDATE"
+🔧 Si tienes problemas con Atlas:
+Alternativa: MongoDB Local + Compass
+Instalar MongoDB Community:
+
+Descargar: https://www.mongodb.com/try/download/community
+Instalar siguiendo el wizard
+Asegurate de marcar: "Install MongoDB as a Service"
+Conectar Compass a local:
+
+mongodb://localhost:27017
+Actualizar .env para local:
+MONGODB_URI=mongodb://localhost:27017/ram_db
+📊 Verificación final
+Una vez conectado correctamente:
+
+Tu aplicación inicia sin errores
+En Compass ves la base de datos ram_db
+Puedes navegar entre colecciones
+Los documentos se muestran correctamente
+💡 Tips para usar Compass:
+Usa la vista "Table" para ver datos como tabla
+Usa "JSON" para ver estructura completa
+Exporta datos con "Export Collection"
+Importa datos con "Import Data"
+Crea índices en la pestaña "Indexes"
+
+Lo correcto y profesional es inicializar y poblar de datos desde codigo
+npm init
+npm install express mongoose cors helmet morgan dotenv

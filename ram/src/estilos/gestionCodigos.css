@@ -1,0 +1,319 @@
+/* Estilos para Gestión de Códigos de Invitación */
+.gestion-codigos-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.gestion-codigos-titulo {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+/* Sección crear código */
+.crear-codigo-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.crear-codigo-section h3 {
+  color: #2980b9;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.crear-codigo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.crear-codigo-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.crear-codigo-form input,
+.crear-codigo-form select {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  transition: border-color 0.3s ease;
+}
+
+.crear-codigo-form input:focus,
+.crear-codigo-form select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.2);
+}
+
+.btn-crear-codigo {
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-crear-codigo:hover:not(:disabled) {
+  background: #3498db;
+  transform: translateY(-1px);
+}
+
+.btn-crear-codigo:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+}
+
+/* Sección lista de códigos */
+.codigos-lista-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.codigos-lista-section h3 {
+  color: #2980b9;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.sin-codigos {
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Tabla de códigos */
+.codigos-tabla {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tabla-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 0.8fr 1.2fr 0.8fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #2c3e50;
+  border-bottom: 2px solid #2980b9;
+}
+
+.tabla-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 0.8fr 1.2fr 0.8fr 0.8fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  transition: background-color 0.3s ease;
+  align-items: center;
+}
+
+.tabla-fila:hover {
+  background: #f8f9fa;
+}
+
+.codigo-valor {
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  color: #2980b9;
+  background: #ecf0f1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.codigo-rol {
+  font-weight: 500;
+  color: #34495e;
+}
+
+.codigo-descripcion {
+  color: #2c3e50;
+}
+
+.codigo-usos {
+  text-align: center;
+  font-weight: 500;
+}
+
+.codigo-expiracion {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.codigo-estado {
+  text-align: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.codigo-estado.activo {
+  background: #d5f4e6;
+  color: #27ae60;
+}
+
+.codigo-estado.expirado {
+  background: #fadbd8;
+  color: #e74c3c;
+}
+
+.codigo-estado.agotado {
+  background: #fdeaa7;
+  color: #f39c12;
+}
+
+.codigo-estado.desactivado {
+  background: #eaecee;
+  color: #95a5a6;
+}
+
+.codigo-acciones {
+  text-align: center;
+}
+
+.btn-desactivar {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-desactivar:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+/* Mensajes */
+.mensaje-error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #ffcdd2;
+}
+
+.mensaje-exito {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #c8e6c9;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .tabla-header,
+  .tabla-fila {
+    grid-template-columns: 1fr 1fr 1.5fr 0.8fr 1fr 0.8fr 0.8fr;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gestion-codigos-container {
+    padding: 1rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .tabla-header,
+  .tabla-fila {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    text-align: left;
+  }
+
+  .tabla-header {
+    display: none;
+  }
+
+  .tabla-fila {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .tabla-fila > span {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .tabla-fila > span:before {
+    content: attr(data-label) ": ";
+    font-weight: bold;
+    color: #2980b9;
+  }
+
+  .codigo-valor:before {
+    content: "Código: ";
+  }
+  .codigo-rol:before {
+    content: "Rol: ";
+  }
+  .codigo-descripcion:before {
+    content: "Descripción: ";
+  }
+  .codigo-usos:before {
+    content: "Usos: ";
+  }
+  .codigo-expiracion:before {
+    content: "Expira: ";
+  }
+  .codigo-estado:before {
+    content: "Estado: ";
+  }
+  .codigo-acciones:before {
+    content: "Acciones: ";
+  }
+}

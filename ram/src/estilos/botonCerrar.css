@@ -1,0 +1,23 @@
+.boton-cerrar {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  background: #fff;
+  color: #2a7fa3;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(42, 127, 163, 0.13);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  z-index: 10;
+  display: grid;
+  place-content: center;
+}
+.boton-cerrar:hover {
+  background: #2a7fa3;
+  color: #fff;
+}

@@ -1,0 +1,254 @@
+/* Responsive dashboard layout */
+@media (max-width: 900px) {
+  .dashboard-container {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  .dashboard-bienvenida {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1rem;
+  }
+  .logo-ram {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .slogan {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .dashboard-section {
+    margin-top: 1.2rem;
+  }
+  .workflow-step.sistema {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .logo-ram {
+    width: 80px;
+    margin-bottom: 0.7rem;
+  }
+  h1 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  .slogan {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+  .dashboard-bienvenida {
+    font-size: 0.95rem;
+    padding: 0.5rem;
+  }
+  .dashboard-section {
+    margin-top: 0.7rem;
+  }
+  .dashboard-btn-volver {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+  .workflow-step.sistema {
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+}
+/* Secciones del dashboard con separación vertical */
+.dashboard-section {
+  margin-top: 2rem;
+}
+
+/* Botón volver en informes estadísticos */
+.dashboard-btn-volver {
+  background: #95a5a6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.dashboard-btn-volver:hover {
+  background: #7f8c8d;
+  color: #fff;
+  transform: scale(1.04);
+}
+/* Botón cerrar sesión destacado en el lateral superior derecho */
+.logout-btn {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  margin-right: 3rem;
+  background: #fff;
+  color: #c0392b;
+  border: 2px solid #c0392b;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.75rem;
+  box-shadow: 0 2px 12px rgba(192, 57, 43, 0.08);
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.2s;
+}
+.logout-btn:hover {
+  background: #c0392b;
+  color: #fff;
+  border-color: #e74c3c;
+  transform: scale(1.07);
+}
+/* Botón cerrar sesión con estilos acordes al dashboard */
+.workflow-step.logout {
+  background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+.workflow-step.logout:hover {
+  background: linear-gradient(90deg, #c0392b 0%, #e74c3c 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+.dashboard-container {
+  background: linear-gradient(
+    135deg,
+    var(--verde-ram) 60%,
+    var(--blanco-ram) 100%
+  );
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  color: var(--negro-ram);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.logo-ram {
+  width: 120px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--azul-ram);
+}
+
+h1 {
+  color: var(--azul-ram);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.slogan {
+  font-size: 1.2rem;
+  color: var(--negro-ram);
+  margin-bottom: 2rem;
+}
+
+.dashboard-bienvenida {
+  margin: 0 auto 1.5rem auto;
+  padding: 0.5rem 1.5rem;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  font-size: 1.1rem;
+  color: var(--azul-ram);
+  display: inline-block;
+}
+
+.dashboard-bienvenida strong {
+  color: var(--verde-ram);
+}
+
+.workflow {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2rem;
+  justify-items: stretch;
+  align-items: stretch;
+  margin: 2rem auto 0 auto;
+  max-width: 900px;
+}
+
+.workflow-step {
+  background: var(--blanco-ram);
+  border-left: 8px solid var(--azul-ram);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  width: 100%;
+  max-width: 400px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px var(--verde-ram);
+  transition: transform 0.2s, border-left-color 0.2s;
+  margin: 0 auto;
+}
+
+.workflow-grid > .workflow-step.admin:not(:nth-child(2)),
+.workflow-grid > .workflow-step.sistema {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.workflow-step.prof {
+  border-left-color: var(--azul-ram);
+}
+
+.workflow-step.est {
+  border-left-color: var(--negro-ram);
+}
+
+.workflow-step.sistema {
+  border-left-color: var(--azul-ram);
+  background: linear-gradient(90deg, #2980b9 10%, #eaf6fb 90%);
+  color: #1a232b;
+  font-weight: bold;
+  grid-column: 1 / span 2;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+  display: block;
+}
+
+.workflow-step.admin.registra-estudiantes {
+  grid-column: 1 / span 2;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.workflow-step:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px var(--azul-ram);
+}
+
+.workflow-row {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}

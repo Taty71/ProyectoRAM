@@ -1,0 +1,28 @@
+/* Estilos para mensaje de bienvenida */
+.mensaje-bienvenida {
+  text-align: center;
+  margin: 1rem 0 1.5rem 0;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(41, 128, 185, 0.1),
+    rgba(52, 152, 219, 0.15)
+  );
+  border: 1px solid rgba(41, 128, 185, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mensaje-bienvenida-titulo {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.mensaje-bienvenida-institucion {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  color: #34495e;
+  font-weight: 500;
+}

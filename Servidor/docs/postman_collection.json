@@ -1,0 +1,121 @@
+{
+  "info": {
+    "name": "RAM Auth API",
+    "description": "Colección de pruebas para endpoints de autenticación y códigos de invitación.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login Usuario",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/login/usuario", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "login", "usuario"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"admin@demo.com\",\n  \"password\": \"123456\"\n}"}
+      }
+    },
+    {
+      "name": "Login Estudiante",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/login/estudiante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "login", "estudiante"]},
+        "body": {"mode": "raw", "raw": "{\n  \"idEstudiante\": \"2025001\",\n  \"password\": \"123456\"\n}"}
+      }
+    },
+    {
+      "name": "Registro Usuario",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/registro/usuario", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "registro", "usuario"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"nuevo@demo.com\",\n  \"password\": \"123456\",\n  \"nombre\": \"Nuevo\",\n  \"apellido\": \"Usuario\",\n  \"dni\": \"12345678\",\n  \"rol\": \"administrador\",\n  \"institucion\": \"<id_institucion>\",\n  \"codigoInvitacion\": \"<codigo>\"\n}"}
+      }
+    },
+    {
+      "name": "Registro Estudiante",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/registro/estudiante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "registro", "estudiante"]},
+        "body": {"mode": "raw", "raw": "{\n  \"idEstudiante\": \"2025002\",\n  \"nombre\": \"Juan\",\n  \"apellido\": \"Pérez\",\n  \"dni\": \"87654321\",\n  \"email\": \"juan@demo.com\",\n  \"password\": \"123456\",\n  \"institucion\": \"<id_institucion>\",\n  \"especialidad\": \"Informática\",\n  \"año\": 5,\n  \"division\": \"A\",\n  \"fechaNacimiento\": \"2008-05-10\",\n  \"codigoInvitacion\": \"<codigo>\"\n}"}
+      }
+    },
+    {
+      "name": "Verificar Token",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer <token>"}],
+        "url": {"raw": "http://localhost:3000/api/auth/verificar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "verificar"]}
+      }
+    },
+    {
+      "name": "Recuperar Usuario",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/recuperar", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "recuperar"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"admin@demo.com\"\n}"}
+      }
+    },
+    {
+      "name": "Recuperar Estudiante",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/recuperar/estudiante", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "recuperar", "estudiante"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"juan@demo.com\"\n}"}
+      }
+    },
+    {
+      "name": "Validar Código",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/validar-codigo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "validar-codigo"]},
+        "body": {"mode": "raw", "raw": "{\n  \"codigo\": \"<codigo>\"\n}"}
+      }
+    },
+    {
+      "name": "Crear Código",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}, {"key": "Authorization", "value": "Bearer <admin-token>"}],
+        "url": {"raw": "http://localhost:3000/api/auth/crear-codigo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "crear-codigo"]},
+        "body": {"mode": "raw", "raw": "{\n  \"rol\": \"profesor\",\n  \"descripcion\": \"Código para profesor\",\n  \"usos\": 5,\n  \"fechaExpiracion\": \"2025-12-31\"\n}"}
+      }
+    },
+    {
+      "name": "Listar Códigos",
+      "request": {
+        "method": "GET",
+        "header": [{"key": "Authorization", "value": "Bearer <admin-token>"}],
+        "url": {"raw": "http://localhost:3000/api/auth/codigos-invitacion", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "codigos-invitacion"]}
+      }
+    },
+    {
+      "name": "Desactivar Código",
+      "request": {
+        "method": "PUT",
+        "header": [{"key": "Authorization", "value": "Bearer <admin-token>"}],
+        "url": {"raw": "http://localhost:3000/api/auth/desactivar-codigo/<id>", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "desactivar-codigo", "<id>"]}
+      }
+    },
+    {
+      "name": "Solicitar Código",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "http://localhost:3000/api/auth/solicitar-codigo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "solicitar-codigo"]},
+  "body": {"mode": "raw", "raw": "{\n  \"email\": \"solicitante@demo.com\",\n  \"motivo\": \"Quiero ser profesor\",\n  \"institucion\": \"<id_institucion>\",\n  \"institucionNombre\": \"Nombre de la Institución\"\n}"}
+      }
+    },
+    {
+      "name": "Listar Solicitudes de Código",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "http://localhost:3000/api/auth/solicitudes-codigo", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "solicitudes-codigo"]}
+      }
+    }
+  ]
+}

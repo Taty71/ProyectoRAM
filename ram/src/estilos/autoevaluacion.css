@@ -1,0 +1,369 @@
+/* Estilos para la autoevaluación estudiantil */
+
+.seleccion-curso {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.curso-division-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.curso-division-grid label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.curso-division-grid select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  transition: border-color 0.3s;
+}
+
+.curso-division-grid select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Selección de materias */
+.seleccion-materia {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.materias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.materia-card {
+  background: white;
+  border: 2px solid #e8f4f8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.materia-card:hover {
+  transform: translateY(-2px);
+  border-color: #3498db;
+  box-shadow: 0 4px 16px rgba(52, 152, 219, 0.2);
+}
+
+.materia-card h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.materia-card p {
+  margin: 0.5rem 0;
+  color: #7f8c8d;
+}
+
+.no-materias {
+  text-align: center;
+  padding: 3rem;
+  color: #7f8c8d;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 2px dashed #bdc3c7;
+}
+
+/* Autoevaluación con emoticones */
+.autoevaluacion {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.evaluacion-form {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.evaluacion-seccion {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border-left: 4px solid #3498db;
+}
+
+.evaluacion-seccion h4 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Selector de emoticones */
+.emoticon-selector {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.emoticon-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 1rem 0.5rem;
+  border: 3px solid;
+  border-radius: 16px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  position: relative;
+  overflow: hidden;
+}
+
+.emoticon-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.emoticon-btn.selected {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: pulse 0.5s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.emoticon-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.emoticon-texto {
+  font-size: 0.85rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Responsive para emoticones */
+@media (max-width: 768px) {
+  .emoticon-selector {
+    flex-direction: column;
+  }
+
+  .emoticon-btn {
+    min-width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 1rem;
+  }
+
+  .emoticon-emoji {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .emoticon-texto {
+    text-align: left;
+  }
+}
+
+/* Textarea para comentarios */
+.evaluacion-seccion textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: border-color 0.3s;
+}
+
+.evaluacion-seccion textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.evaluacion-acciones {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Confirmación */
+.confirmacion {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.resumen-evaluacion {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #27ae60;
+}
+
+.resumen-puntuaciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.resumen-puntuaciones div {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #2c3e50;
+  border: 2px solid #e8f4f8;
+}
+
+.comentarios-resumen {
+  background: #e8f6f3;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.comentarios-resumen strong {
+  color: #27ae60;
+}
+
+.confirmacion-acciones {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Botones de navegación */
+.btn-volver {
+  background: #95a5a6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: background 0.3s;
+}
+
+.btn-volver:hover {
+  background: #7f8c8d;
+}
+
+.btn-primary {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #2980b9;
+  transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-secondary {
+  background: #95a5a6;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #7f8c8d;
+}
+
+/* Animaciones adicionales */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.seleccion-curso,
+.seleccion-materia,
+.autoevaluacion,
+.confirmacion {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Efectos hover especiales para emoticones */
+.emoticon-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.emoticon-btn:hover::before {
+  left: 100%;
+}

@@ -1,0 +1,35 @@
+.crear-codigo-container {
+  padding: 1rem;
+  background: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  max-width: 400px;
+  margin: 0 auto;
+}
+.crear-codigo-form label {
+  display: block;
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+}
+.crear-codigo-form input,
+.crear-codigo-form select {
+  width: 100%;
+  padding: 0.4rem;
+  margin-top: 0.2rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.btn-crear-codigo {
+  margin-top: 1rem;
+  width: 100%;
+  background: #009688;
+  color: #fff;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.btn-crear-codigo:hover {
+  background: #00796b;
+}

@@ -1,0 +1,45 @@
+{
+  "_id": "ObjectId",
+  "nombre": "IPET 379 ALFREDO BENOIT MOLET",
+  "codigo": "379",
+  "direccion": {
+    "calle": "Avellaneda 685",
+    "ciudad": "La Calera",
+    "provincia": "Cordoba",
+    "codigoPostal": "5151"
+  },
+  "contacto": {
+    "telefono": "03543468993",
+    "email": "ipet379molet@gmail.com",
+    "sitioWeb": "https://ipet379molet.edu.ar/"
+  },
+  "tipoInstitucion": "tecnica_secundaria",
+  "configuracion": {
+    "especialidades": [
+      {
+        "id": "electricidad",
+        "nombre": "Electricidad",
+        "años": ["4to", "5to", "6to"],
+        "activa": true
+      },
+      {
+        "id": "programacion", 
+        "nombre": "Programación",
+        "años": ["4to", "5to", "6to", "7mo"],
+        "activa": true
+      }
+    ],
+    "cicloAcademico": {
+      "año": 2025,
+      "periodo": "anual",
+      "fechaInicio": "2025-03-03T00:00:00.000Z",
+      "fechaFin": "2025-12-23T00:00:00.000Z"
+    },
+    "maxEstudiantesPorCurso": 35,
+    "habilitarAutoevaluaciones": true,
+    "requiereAprobacionDocente": false
+  },
+  "activa": true,
+  "createdAt": "Date",
+  "updatedAt": "Date"
+}

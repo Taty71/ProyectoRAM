@@ -1,0 +1,875 @@
+[{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df3"
+  },
+  "nombre": "Matemática I",
+  "codigo": "MAT1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.069Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.069Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df6"
+  },
+  "nombre": "Lengua y Literatura I",
+  "codigo": "LEN1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.076Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.076Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df9"
+  },
+  "nombre": "Física I",
+  "codigo": "FIS1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de6"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.081Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.081Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751dfc"
+  },
+  "nombre": "Tecnología I",
+  "codigo": "TEC1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dd4"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.090Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.090Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751dff"
+  },
+  "nombre": "Matemática II",
+  "codigo": "MAT2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.095Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.095Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e02"
+  },
+  "nombre": "Lengua y Literatura II",
+  "codigo": "LEN2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.100Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.100Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e05"
+  },
+  "nombre": "Física II",
+  "codigo": "FIS2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de6"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.107Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.107Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e08"
+  },
+  "nombre": "Tecnología II",
+  "codigo": "TEC2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dd4"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.113Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.113Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e0b"
+  },
+  "nombre": "Matemática III",
+  "codigo": "MAT3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.120Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.120Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e0e"
+  },
+  "nombre": "Lengua y Literatura III",
+  "codigo": "LEN3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.125Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.125Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e11"
+  },
+  "nombre": "Física III",
+  "codigo": "FIS3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de6"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.130Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.130Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e14"
+  },
+  "nombre": "Introducción a la Electricidad",
+  "codigo": "IEL3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.134Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.134Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e17"
+  },
+  "nombre": "Introducción a la Programación",
+  "codigo": "IPR3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.140Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.140Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e1a"
+  },
+  "nombre": "Circuitos Eléctricos I",
+  "codigo": "CEL4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.145Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.145Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e1d"
+  },
+  "nombre": "Electrónica Analógica I",
+  "codigo": "EAN4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.150Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.150Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e20"
+  },
+  "nombre": "Instalaciones Eléctricas I",
+  "codigo": "IEL4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.156Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e23"
+  },
+  "nombre": "Matemática Aplicada",
+  "codigo": "MAP4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.161Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.161Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e26"
+  },
+  "nombre": "Circuitos Eléctricos II",
+  "codigo": "CEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.166Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e29"
+  },
+  "nombre": "Electrónica Digital",
+  "codigo": "EDI5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.172Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e2c"
+  },
+  "nombre": "Instalaciones Eléctricas II",
+  "codigo": "IEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.178Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e2f"
+  },
+  "nombre": "Máquinas Eléctricas I",
+  "codigo": "MEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.182Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.182Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e32"
+  },
+  "nombre": "Proyecto Final Electricidad",
+  "codigo": "PFE6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.189Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.189Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e35"
+  },
+  "nombre": "Automatización Industrial",
+  "codigo": "AIN6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.194Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e38"
+  },
+  "nombre": "Máquinas Eléctricas II",
+  "codigo": "MEL6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.198Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.198Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e3b"
+  },
+  "nombre": "Algoritmos y Programación I",
+  "codigo": "ALG4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.204Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.204Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e3e"
+  },
+  "nombre": "Estructuras de Datos I",
+  "codigo": "EDA4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.210Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.210Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e41"
+  },
+  "nombre": "Sistemas Operativos I",
+  "codigo": "SOP4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.214Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.214Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e44"
+  },
+  "nombre": "Matemática Discreta",
+  "codigo": "MAD4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.220Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.220Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e47"
+  },
+  "nombre": "Algoritmos y Programación II",
+  "codigo": "ALG5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.225Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.225Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e4a"
+  },
+  "nombre": "Base de Datos I",
+  "codigo": "BDA5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751def"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.229Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.229Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e4d"
+  },
+  "nombre": "Desarrollo Web I",
+  "codigo": "DWE5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.233Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.233Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e50"
+  },
+  "nombre": "Ingeniería de Software I",
+  "codigo": "ISW5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.240Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e53"
+  },
+  "nombre": "Proyecto Final Programación",
+  "codigo": "PFP6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.245Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.245Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e56"
+  },
+  "nombre": "Base de Datos II",
+  "codigo": "BDA6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751def"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e59"
+  },
+  "nombre": "Desarrollo Web II",
+  "codigo": "DWE6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.256Z"
+  },
+  "updatedAt": {
+    "$date": "2025-08-26T14:59:54.256Z"
+  },
+  "__v": 0
+}]

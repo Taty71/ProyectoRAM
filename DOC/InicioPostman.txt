@@ -1,0 +1,41 @@
+Poblar de datos con Postman
+
+http://localhost:5000/api/instituciones
+Content-Type: application/json
+{
+  "nombre": "Escuela Técnica Provincial",
+  "codigo": "ETP001",
+  "direccion": {
+    "calle": "Av. Técnica 456",
+    "ciudad": "Ciudad Ejemplo",
+    "provincia": "Provincia Ejemplo",
+    "codigoPostal": "1000"
+  },
+  "contacto": {
+    "telefono": "+54 11 1234-5678",
+    "email": "contacto@escuelatecnica.edu.ar",
+    "sitioWeb": "www.escuelatecnica.edu.ar"
+  },
+  "especialidades": [
+    {
+      "nombre": "Ciclo Básico Unificado",
+      "codigo": "CBU",
+      "duracion": 3,
+      "activa": true
+    },
+    {
+      "nombre": "Técnico en Electricidad", 
+      "codigo": "ELE",
+      "duracion": 3,
+      "activa": true
+    },
+    {
+      "nombre": "Técnico en Programación",
+      "codigo": "PRG", 
+      "duracion": 3,
+      "activa": true
+    }
+  ]
+}
+
+

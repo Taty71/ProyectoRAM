@@ -1,0 +1,111 @@
+/* Estilos para el formulario de registro de institución */
+.registro-institucion-container {
+  background: linear-gradient(135deg, #b2eaff 0%, #aee6ca 100%);
+  color: var(--color-texto);
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+  max-width: 700px;
+  margin: 3rem auto;
+  font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+}
+
+.registro-institucion-titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #2a7fa3;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(42, 127, 163, 0.08);
+}
+
+.registro-institucion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.registro-institucion-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.registro-institucion-row label {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #226e7c;
+  font-size: 1.08rem;
+}
+
+.registro-institucion-form input,
+.registro-institucion-form select {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #7ec6c2;
+  margin-top: 0.3rem;
+  font-size: 1.05rem;
+  background: #fafdff;
+  color: #226e7c;
+  transition: border 0.2s;
+}
+.registro-institucion-form input:focus,
+.registro-institucion-form select:focus {
+  border-color: #2a7fa3;
+  outline: none;
+}
+
+.registro-institucion-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Estilos para los botones principales del registro de institución */
+.registro-institucion-btn {
+  background: linear-gradient(90deg, #2a7fa3 0%, #7ec6c2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.7rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(42, 127, 163, 0.13);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  margin-bottom: 0.5rem;
+}
+.registro-institucion-btn:hover,
+.registro-institucion-btn:focus {
+  background: linear-gradient(90deg, #226e7c 0%, #2a7fa3 100%);
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+/* Botón secundario (volver al panel) */
+.registro-institucion-btn.volver {
+  background: linear-gradient(90deg, #b2eaff 0%, #aee6ca 100%);
+  color: #226e7c;
+  border: 1px solid #7ec6c2;
+  font-weight: 500;
+}
+.registro-institucion-btn.volver:hover,
+.registro-institucion-btn.volver:focus {
+  background: linear-gradient(90deg, #aee6ca 0%, #b2eaff 100%);
+  color: #2a7fa3;
+  border-color: #2a7fa3;
+}
+
+.registro-exito {
+  color: #2ecc71;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+.registro-error {
+  color: #c0392b;
+  font-weight: bold;
+  margin-top: 1rem;
+}

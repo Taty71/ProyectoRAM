@@ -1,0 +1,28 @@
+:root {
+  --verde-ram: #74c7b8;
+  --azul-ram: #4a90e2;
+  --blanco-ram: #ffffff;
+  --negro-ram: #222222;
+}
+
+.select-institucion {
+  padding: 0.6rem 1.2rem;
+  border-radius: 1.2rem;
+  border: 1.5px solid #2a7fa3;
+  background: #f8fcff;
+  color: #2a7fa3;
+  font-size: 1.1rem;
+  font-family: inherit;
+  box-shadow: 0 2px 8px rgba(42, 127, 163, 0.08);
+  transition: border 0.2s, box-shadow 0.2s;
+  max-width: 100%;
+  min-width: 180px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.select-institucion:focus {
+  border-color: #176080;
+  box-shadow: 0 2px 12px rgba(42, 127, 163, 0.18);
+}

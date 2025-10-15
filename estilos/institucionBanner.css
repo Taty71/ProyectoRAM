@@ -1,0 +1,53 @@
+/** estilos/institucionBanner.css */
+
+.banner {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner h1 {
+    font-size: 2.5em;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.banner p {
+    font-size: 1.2em;
+    animation: slideIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .banner {
+        padding: 15px;
+    }
+    .banner h1 {
+        font-size: 2em;
+    }
+    .banner p {
+        font-size: 1em;
+    }
+}

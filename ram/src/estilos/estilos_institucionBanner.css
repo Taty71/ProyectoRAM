@@ -8,40 +8,53 @@
 }
 
 .institucion-banner-contenido {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(174, 230, 202, 0.9) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(174, 230, 202, 0.9) 100%
+  );
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border: 2px solid rgba(41, 128, 185, 0.3);
-  border-radius: 30px;
-  padding: 0.8rem 2rem;
+  border: 1px solid rgba(41, 128, 185, 0.22);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  box-shadow: 
-    0 4px 20px rgba(41, 128, 185, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  gap: 0.6rem;
+  box-shadow: 0 6px 18px rgba(41, 128, 185, 0.08);
+  transition: all 0.22s ease;
 }
 
 .institucion-banner-contenido:hover {
   transform: translateX(5px);
-  box-shadow: 
-    0 6px 25px rgba(41, 128, 185, 0.25),
+  box-shadow: 0 6px 25px rgba(41, 128, 185, 0.25),
     0 3px 12px rgba(0, 0, 0, 0.15);
 }
 
 .institucion-banner-icono {
-  font-size: 1.5rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  font-size: 1.2rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.06));
 }
 
 .institucion-banner-texto {
-  font-family: 'Segoe UI', 'Georgia', serif;
-  font-size: 1.1rem;
+  font-family: "Segoe UI", "Georgia", serif;
+  font-size: 0.95rem;
   font-weight: 600;
   color: #2c3e50;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+/* variante compacta */
+.institucion-banner-contenido.small {
+  padding: 0.35rem 0.8rem;
+  border-radius: 18px;
+}
+.institucion-banner-contenido.small .institucion-banner-icono {
+  font-size: 1rem;
+}
+.institucion-banner-contenido.small .institucion-banner-texto {
+  font-size: 0.88rem;
 }
 
 /* Animación de entrada desde la izquierda */

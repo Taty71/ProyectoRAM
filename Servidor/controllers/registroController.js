@@ -6,15 +6,59 @@ const Institucion = require('../models/Institucion');
 
 exports.registroUsuario = async (req, res) => {
   try {
+    // 🔍 LOG: Ver qué llega
+    console.log('📥 DATOS RECIBIDOS:', JSON.stringify(req.body, null, 2));
+    
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log('❌ ERRORES DE VALIDACIÓN:', JSON.stringify(errors.array(), null, 2));
       return res.status(400).json({ error: 'Datos inválidos', detalles: errors.array() });
     }
+    
     const { email, password, nombre, apellido, dni, rol, institucion, especialidades, ciclo, cursosACargo, codigoInvitacion } = req.body;
+    
+    // 🔍 LOG: Buscar código
+    console.log('🔍 Buscando código:', codigoInvitacion);
+    
     const codigo = await CodigoInvitacion.findOne({ codigo: codigoInvitacion, activo: true, usosRestantes: { $gt: 0 } });
-    if (!codigo) return res.status(400).json({ error: 'Código de invitación inválido, expirado o agotado' });
-    if (codigo.fechaExpiracion && codigo.fechaExpiracion < new Date()) return res.status(400).json({ error: 'El código de invitación ha expirado' });
-    if (codigo.rol !== rol) return res.status(400).json({ error: `Este código es para registro de ${codigo.rol}, no para ${rol}` });
+    
+    if (!codigo) {
+      console.log('❌ Código no encontrado o sin usos');
+      return res.status(400).json({ error: 'Código de invitación inválido, expirado o agotado' });
+    }
+    
+    // 🔍 LOG: Verificar fecha de expiración
+    console.log('📅 Código encontrado:', {
+      codigo: codigo.codigo,
+      fechaExpiracion: codigo.fechaExpiracion,
+      fechaActual: new Date(),
+      estaExpirado: codigo.fechaExpiracion && codigo.fechaExpiracion < new Date()
+    });
+    
+    if (codigo.fechaExpiracion && codigo.fechaExpiracion < new Date()) {
+      console.log('❌ Código expirado');
+      return res.status(400).json({ 
+        error: 'El código de invitación ha expirado',
+        detalles: {
+          fechaExpiracion: codigo.fechaExpiracion,
+          fechaActual: new Date()
+        }
+      });
+    }
+    
+    // 🔍 LOG: Verificar rol
+    console.log('🔍 Verificando rol:', {
+      rolDelCodigo: codigo.rol,
+      rolSolicitado: rol,
+      coinciden: codigo.rol === rol
+    });
+    
+    if (codigo.rol !== rol) {
+      console.log(`❌ Rol incorrecto`);
+      return res.status(400).json({ error: `Este código es para registro de ${codigo.rol}, no para ${rol}` });
+    }
+    
+  
     const institucionExiste = await Institucion.findById(institucion);
     if (!institucionExiste) return res.status(400).json({ error: 'La institución especificada no existe' });
     const usuarioExistente = await Usuario.findOne({ $or: [{ email }, { dni }] });

@@ -28,7 +28,7 @@ router.post('/registro/usuario', [
   body('password').isLength({ min: 6 }),
   body('nombre').notEmpty().trim().escape(),
   body('apellido').notEmpty().trim().escape(),
-  body('dni').optional({ nullable: true, checkFalsy: true }).trim(), // ✅ CAMBIO: ahora es opcional
+  body('dni').notEmpty().trim(),
   body('rol').isIn(['administrador', 'profesor', 'jefe_area']),
   body('institucion').isMongoId(),
   body('codigoInvitacion').notEmpty().trim()
@@ -38,7 +38,7 @@ router.post('/registro/estudiante', [
   body('idEstudiante').notEmpty().trim(),
   body('nombre').notEmpty().trim().escape(),
   body('apellido').notEmpty().trim().escape(),
-  body('dni').optional({ nullable: true, checkFalsy: true }).trim(), // ✅ CAMBIO: ahora es opcional
+  body('dni').notEmpty().trim(),
   body('email').isEmail().normalizeEmail(),
   body('password').isLength({ min: 6 }),
   body('institucion').isMongoId(),

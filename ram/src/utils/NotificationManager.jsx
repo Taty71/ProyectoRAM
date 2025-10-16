@@ -11,14 +11,17 @@ function NotificationManager({
 }) {
   
   // Auto-hide para mensajes de éxito
-  React.useEffect(() => {
-    if (mensaje && autoHide && onClearMensaje) {
-      const timer = setTimeout(() => {
-        onClearMensaje();
-      }, hideDelay);
-      return () => clearTimeout(timer);
-    }
-  }, [mensaje, autoHide, hideDelay, onClearMensaje]);
+  // Agregar después del useEffect existente (línea 21)
+
+// Auto-hide para errores también (opcional)
+React.useEffect(() => {
+  if (error && autoHide && onClearError) {
+    const timer = setTimeout(() => {
+      onClearError();
+    }, hideDelay + 2000); // Dar más tiempo a los errores
+    return () => clearTimeout(timer);
+  }
+}, [error, autoHide, hideDelay, onClearError]);
 
   if (!error && !mensaje) return null;
 

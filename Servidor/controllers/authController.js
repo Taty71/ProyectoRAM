@@ -22,26 +22,43 @@ const transporter = nodemailer.createTransport({
 
 exports.solicitarCodigo = async (req, res) => {
   const { email, nombre, apellido, rol, institucion, institucionNombre } = req.body;
+  
   if (!email || !nombre || !apellido || !rol) {
     return res.status(400).json({ error: 'Nombre, apellido, email y rol son requeridos.' });
   }
+  
   try {
     let nombreInstitucion = institucionNombre || 'No especificada';
-    if (!institucionNombre && institucion) {
+    let institucionId = institucion; // Guardar el ID recibido
+    
+    // Si no viene institucionId pero sí nombre, intentar buscarla
+    if (!institucionId && institucionNombre) {
       const Institucion = require('../models/Institucion');
-      const inst = await Institucion.findById(institucion);
+      const inst = await Institucion.findOne({ nombre: institucionNombre });
+      if (inst) {
+        institucionId = inst._id;
+        nombreInstitucion = inst.nombre;
+      }
+    }
+    
+    // Si viene institucionId pero no nombre, buscar el nombre
+    if (institucionId && !institucionNombre) {
+      const Institucion = require('../models/Institucion');
+      const inst = await Institucion.findById(institucionId);
       if (inst && inst.nombre) {
         nombreInstitucion = inst.nombre;
       }
     }
+    
     const solicitud = new SolicitudCodigo({
       nombre,
       apellido,
       email,
       rol,
-      institucion,
+      institucion: institucionId, // ✅ AGREGAR EL ID AQUÍ
       institucionNombre: nombreInstitucion
     });
+    
     await solicitud.save();
 
     // Email al admin
@@ -54,10 +71,10 @@ exports.solicitarCodigo = async (req, res) => {
 
     return res.json({ mensaje: 'Solicitud registrada y notificada al administrador.' });
   } catch (err) {
+    console.error('Error al registrar solicitud:', err);
     return res.status(500).json({ error: 'Error al registrar la solicitud.' });
   }
 };
-
 exports.listarSolicitudesCodigo = async (req, res) => {
   try {
     const solicitudes = await SolicitudCodigo.find().populate('institucion').sort({ fecha: -1 });

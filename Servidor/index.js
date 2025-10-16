@@ -27,11 +27,26 @@ app.use(limiter);
 app.use(morgan('combined'));
 
 // Configuración de CORS para permitir el frontend
+// Configuración de CORS para permitir múltiples puertos de desarrollo
+//app.use(cors({
+  //origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
+  //credentials: true
+//}));
+// Configuración de CORS más flexible para desarrollo
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: function (origin, callback) {
+    // Permitir sin origen (Postman, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Permitir cualquier localhost en cualquier puerto
+    if (origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')) {
+      return callback(null, true);
+    }
+    
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
-
 // Middleware para parsing de JSON
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));

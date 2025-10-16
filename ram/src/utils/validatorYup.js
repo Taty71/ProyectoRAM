@@ -39,7 +39,13 @@ export const administradorSchema = Yup.object().shape({
   nombre: Yup.string().required('El nombre es obligatorio'),
   apellido: Yup.string().required('El apellido es obligatorio'),
   email: Yup.string().email('Email inválido').required('El email es obligatorio'),
-  dni: Yup.string().matches(/^\\d{7,8}$/, 'DNI inválido').required('El DNI es obligatorio'),
+  dni: Yup.string()
+  .matches(/^\d{7,8}$/, 'DNI inválido (debe tener 7 u 8 dígitos)')
+  .nullable()  // ✅ Permitir null
+  .transform((value, originalValue) => {
+    // Si está vacío, devolver null
+    return originalValue === "" ? null : value;
+  }),
   password: Yup.string().min(6, 'La contraseña debe tener al menos 6 caracteres').required('La contraseña es obligatoria'),
   confirmarPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Las contraseñas no coinciden')

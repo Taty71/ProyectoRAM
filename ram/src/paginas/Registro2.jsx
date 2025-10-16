@@ -9,6 +9,7 @@ import "../estilos/registro.css";
 function Registro({ setPantalla, institucionId, institucionNombre: institucionNombreProp }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmarPassword, setConfirmarPassword] = useState(""); // ✅ AGREGADO
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [dni, setDni] = useState("");
@@ -16,124 +17,176 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
   const [rol, setRol] = useState("");
   const [notif, setNotif] = useState({ error: null, mensaje: "" });
   const [mostrarSolicitud, setMostrarSolicitud] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [institucionNombre, setInstitucionNombre] = useState(institucionNombreProp || "");
   
   const { error, clearError, handleAsync, setValidationError, formatError } = useErrorHandler();
 
   useEffect(() => {
-  async function fetchInstitucion() {
-    const storedId = institucionId || localStorage.getItem("institucionId");
-    const storedNombre = localStorage.getItem("institucionNombre");
-    
-    // Si ya tenemos el nombre en localStorage, usarlo
-    if (storedNombre && !institucionNombre) {
-      setInstitucionNombre(storedNombre);
-    }
-    
-    if (!storedId) return;
-    
-    try {
-      const res = await fetch(`http://localhost:3000/api/instituciones/${storedId}`);
-      const data = await res.json();
-      if (res.ok && data.institucion && data.institucion.nombre) {
-        setInstitucionNombre(data.institucion.nombre);
-        // ✅ GUARDAR en localStorage
-        localStorage.setItem("institucionId", storedId);
-        localStorage.setItem("institucionNombre", data.institucion.nombre);
-        console.log('🏫 Institución guardada:', {
-          id: storedId,
-          nombre: data.institucion.nombre
-        });
+    async function fetchInstitucion() {
+      const storedId = institucionId || localStorage.getItem("institucionId");
+      const storedNombre = localStorage.getItem("institucionNombre");
+      
+      if (storedNombre && !institucionNombre) {
+        setInstitucionNombre(storedNombre);
       }
-    } catch (err) {
-      console.error("Error al obtener institución:", err);
+      
+      if (!storedId) return;
+      
+      try {
+        const res = await fetch(`http://localhost:3000/api/instituciones/${storedId}`);
+        const data = await res.json();
+        if (res.ok && data.institucion && data.institucion.nombre) {
+          setInstitucionNombre(data.institucion.nombre);
+          localStorage.setItem("institucionId", storedId);
+          localStorage.setItem("institucionNombre", data.institucion.nombre);
+          console.log('🏫 Institución guardada:', {
+            id: storedId,
+            nombre: data.institucion.nombre
+          });
+        }
+      } catch (err) {
+        console.error("Error al obtener institución:", err);
+      }
     }
-  }
-  fetchInstitucion();
-}, [institucionId, institucionNombre]);
+    fetchInstitucion();
+  }, [institucionId, institucionNombre]);
 
   const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  if (isSubmitting) return;
+  
+  setIsSubmitting(true);
+  clearError();
+  setNotif({ error: null, mensaje: "" });
+  
+  try {
+    await administradorSchema.validate({ 
+      nombre, 
+      apellido, 
+      email, 
+      password, 
+      confirmarPassword,
+      dni: dni || null,
+      rol 
+    });
+  } catch (validationError) {
+    setValidationError(validationError.message);
+    setNotif({ error: { message: validationError.message }, mensaje: "" });
+    setIsSubmitting(false);
+    return;
+  }
+  
+  if (!codigo) {  // ✅ CORRECTO: usa "codigo"
+    setValidationError("Debes ingresar el código de invitación");
+    setNotif({ error: { message: "Debes ingresar el código de invitación" }, mensaje: "" });
+    setIsSubmitting(false);
+    return;
+  }
+  // ✅ Obtener institucionId desde props o localStorage
+  const storedInstitucionId = institucionId || localStorage.getItem("institucionId");
+  
+  // ✅ Validar que exista institucionId
+  if (!storedInstitucionId) {
+    setValidationError("Error: No se pudo obtener la institución");
+    setNotif({ error: { message: "Error: No se pudo obtener la institución. Por favor, recarga la página." }, mensaje: "" });
+    return;
+  }
+  try {
+    const payload = { 
+      email, 
+      password, 
+      nombre, 
+      apellido, 
+      institucion: storedInstitucionId, // ✅
+      codigoInvitacion: codigo,  // ✅ Transformación correcta
+      rol 
+    };
+    
+    if (dni && dni.trim()) {
+      payload.dni = dni.trim();
+    }
+    
+    // 🔍 ESTO ES CRUCIAL - DEBE APARECER EN LA CONSOLA
+    console.log('📤 ENVIANDO AL SERVIDOR:', JSON.stringify(payload, null, 2));
+    
+    await handleAsync(() => ErrorHandler.handleFetch("http://localhost:3000/api/auth/registro/usuario", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }, "No se pudo registrar."));
+    
+    setNotif({ error: null, mensaje: "Usuario registrado exitosamente." });
+    
+    setEmail("");
+    setPassword("");
+    setConfirmarPassword("");
+    setNombre("");
+    setApellido("");
+    setDni("");
+    setCodigo("");
+    setRol("");
+  } catch (err) {
+    console.error('❌ ERROR RECIBIDO:', err);
+    setNotif({ error: { message: formatError(err) }, mensaje: "" });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+  const handleSolicitudCodigo = async (e) => {
     e.preventDefault();
     clearError();
     setNotif({ error: null, mensaje: "" });
-    try {
-      await administradorSchema.validate({ nombre, apellido, email, password, confirmarPassword: password, dni: dni || "00000000", rol });
-    } catch (validationError) {
-      setValidationError(validationError.message);
-      setNotif({ error: { message: validationError.message }, mensaje: "" });
+    
+    if (!email) {
+      setValidationError("Debes ingresar tu correo electrónico");
+      setNotif({ error: { message: "Debes ingresar tu correo electrónico" }, mensaje: "" });
       return;
     }
-    if (!codigo) {
-      setValidationError("Debes ingresar el código de invitación");
-      setNotif({ error: { message: "Debes ingresar el código de invitación" }, mensaje: "" });
+    if (!nombre || !apellido) {
+      setValidationError("Debes ingresar tu nombre y apellido");
+      setNotif({ error: { message: "Debes ingresar tu nombre y apellido" }, mensaje: "" });
       return;
     }
+    if (!rol) {
+      setValidationError("Debes seleccionar el rol");
+      setNotif({ error: { message: "Debes seleccionar el rol" }, mensaje: "" });
+      return;
+    }
+    
+    const storedInstitucionId = institucionId || localStorage.getItem("institucionId");
+    const storedInstitucionNombre = institucionNombre || localStorage.getItem("institucionNombre");
+    
+    console.log('📨 Enviando solicitud de código:', {
+      email,
+      nombre,
+      apellido,
+      rol,
+      institucionId: storedInstitucionId,
+      institucionNombre: storedInstitucionNombre
+    });
+    
     try {
-      await handleAsync(() => ErrorHandler.handleFetch("http://localhost:3000/api/auth/registro/usuario", {
+      await handleAsync(() => ErrorHandler.handleFetch("http://localhost:3000/api/auth/solicitar-codigo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, nombre, apellido, dni: dni || "00000000", institucion: institucionId, codigo: codigo, rol })
-      }, "No se pudo registrar."));
-      setNotif({ error: null, mensaje: "Usuario registrado exitosamente." });
+        body: JSON.stringify({
+          email,
+          nombre,
+          apellido,
+          dni: dni || null, // ✅ Enviar null en lugar de "00000000"
+          rol: rol.charAt(0).toUpperCase() + rol.slice(1),
+          institucion: storedInstitucionId,
+          institucionNombre: storedInstitucionNombre
+        })
+      }, "No se pudo enviar la solicitud."));
+      setNotif({ error: null, mensaje: "Solicitud enviada correctamente. El administrador te enviará el código por correo." });
     } catch (err) {
       setNotif({ error: { message: formatError(err) }, mensaje: "" });
     }
   };
-
-  const handleSolicitudCodigo = async (e) => {
-  e.preventDefault();
-  clearError();
-  setNotif({ error: null, mensaje: "" });
-  
-  // Validaciones
-  if (!email) {
-    setValidationError("Debes ingresar tu correo electrónico");
-    setNotif({ error: { message: "Debes ingresar tu correo electrónico" }, mensaje: "" });
-    return;
-  }
-  if (!nombre || !apellido) {
-    setValidationError("Debes ingresar tu nombre y apellido");
-    setNotif({ error: { message: "Debes ingresar tu nombre y apellido" }, mensaje: "" });
-    return;
-  }
-  if (!rol) {
-    setValidationError("Debes seleccionar el rol");
-    setNotif({ error: { message: "Debes seleccionar el rol" }, mensaje: "" });
-    return;
-  }
-  
-  // Obtener institucionId del localStorage si no está disponible como prop
-  const storedInstitucionId = institucionId || localStorage.getItem("institucionId");
-  const storedInstitucionNombre = institucionNombre || localStorage.getItem("institucionNombre");
-  
-  console.log('📨 Enviando solicitud de código:', {
-    email,
-    nombre,
-    apellido,
-    rol,
-    institucionId: storedInstitucionId,
-    institucionNombre: storedInstitucionNombre
-  });
-  
-  try {
-    await handleAsync(() => ErrorHandler.handleFetch("http://localhost:3000/api/auth/solicitar-codigo", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email,
-        nombre,
-        apellido,
-        dni: dni || "00000000",
-        rol: rol.charAt(0).toUpperCase() + rol.slice(1),
-        institucion: storedInstitucionId,         // ✅ Ahora envía el ID correctamente
-        institucionNombre: storedInstitucionNombre // ✅ Ahora envía el nombre correctamente
-      })
-    }, "No se pudo enviar la solicitud."));
-    setNotif({ error: null, mensaje: "Solicitud enviada correctamente. El administrador te enviará el código por correo." });
-  } catch (err) {
-    setNotif({ error: { message: formatError(err) }, mensaje: "" });
-  }
-};
 
   return (
     <div className="registro-container">
@@ -154,6 +207,14 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
           onChange={e => setPassword(e.target.value)}
           required
         />
+        {/* ✅ CAMPO AGREGADO */}
+        <input
+          type="password"
+          placeholder="Confirmar contraseña"
+          value={confirmarPassword}
+          onChange={e => setConfirmarPassword(e.target.value)}
+          required
+        />
         <input
           type="text"
           placeholder="Nombre"
@@ -170,7 +231,7 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         />
         <input
           type="text"
-          placeholder="DNI"
+          placeholder="DNI (opcional)"
           value={dni}
           onChange={e => setDni(e.target.value)}
           style={{ marginTop: "1rem" }}
@@ -248,8 +309,8 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         error={error || notif.error}
         mensaje={notif.mensaje}
         onClearError={() => {
-          clearError();  // Limpia error del hook
-          setNotif({ ...notif, error: null });  // ✅ También limpia notif.error
+          clearError();
+          setNotif({ ...notif, error: null });
         }}
         onClearMensaje={() => setNotif({ ...notif, mensaje: "" })}
         autoHide={true}

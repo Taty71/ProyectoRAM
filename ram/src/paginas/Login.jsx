@@ -30,6 +30,11 @@ function Login({ onLogin, setPantalla }) {
         }
       } catch (err) {
         console.error("Error al obtener institución:", err);
+        // Fallback: si ya hay un nombre almacenado en localStorage, úsalo
+        const storedNombre = localStorage.getItem("institucionNombre");
+        if (storedNombre) {
+          setInstitucionNombre(storedNombre);
+        }
       }
     }
     fetchInstitucion();

@@ -15,6 +15,8 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
   const [modalAprobar, setModalAprobar] = useState(null);
   const [usos, setUsos] = useState(1);
   const [diasExpiracion, setDiasExpiracion] = useState(30);
+  const [instituciones, setInstituciones] = useState([]);
+  const [institucionSeleccionada, setInstitucionSeleccionada] = useState(null);
   const [procesando, setProcesando] = useState(false);
 
   // Usar useCallback para evitar el warning
@@ -25,16 +27,24 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
     .then(data => {
       let solicitudesFiltradas = data.solicitudes || [];
       
-      // Filtrar solo si hay institucionId Y si la solicitud tiene el campo institucion
+      // Filtrar por contexto de institución:
+      // - Si se pasa `institucionId` (prop), mostrar sólo solicitudes de esa institución.
+      // - Si no hay `institucionId` pero existe `institucionNombre` (prop/local), filtrar por nombre (case-insensitive).
+      // - Si no hay contexto, mostrar todas las solicitudes.
       if (institucionId) {
         solicitudesFiltradas = solicitudesFiltradas.filter(s => {
-          // Si tiene institucion._id, comparar con eso
-          if (s.institucion && s.institucion._id) {
-            return s.institucion._id === institucionId;
+          if (s.institucion && s.institucion._id) return s.institucion._id === institucionId;
+          if (s.institucion && s.institucion._id === undefined && s.institucionNombre) {
+            // comparar por institucionNombre en la solicitud
+            return s.institucionNombre && s.institucionNombre.toLowerCase().includes((institucionNombre || '').toLowerCase());
           }
-          // Si NO tiene institucion pero tiene institucionNombre, también incluirla
-          // (para las solicitudes antiguas que no tienen el campo institucion)
-          return s.institucionNombre && s.institucionNombre.includes("IPET 379");
+          return false;
+        });
+      } else if (institucionNombre) {
+        const filtro = institucionNombre.toLowerCase();
+        solicitudesFiltradas = solicitudesFiltradas.filter(s => {
+          const nombreSolicitud = (s.institucionNombre || (s.institucion && s.institucion.nombre) || '').toLowerCase();
+          return nombreSolicitud.includes(filtro);
         });
       }
       
@@ -47,17 +57,26 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
       setErrorNotif({ message: "Error al cargar solicitudes" });
       setLoading(false);
     });
-}, [institucionId]);
+}, [institucionId, institucionNombre]);
 
   useEffect(() => {
     cargarSolicitudes();
   }, [cargarSolicitudes]); // Ahora incluir cargarSolicitudes
+
+  // Cargar lista de instituciones para que el admin pueda elegir si la solicitud no tiene institución
+  useEffect(() => {
+    fetch('http://localhost:3000/api/instituciones/activa')
+      .then(res => res.json())
+      .then(data => setInstituciones(data.instituciones || []))
+      .catch(err => console.error('Error cargando instituciones:', err));
+  }, []);
 
   
   const abrirModalAprobar = (solicitud) => {
     setModalAprobar(solicitud);
     setUsos(1);
     setDiasExpiracion(30);
+    setInstitucionSeleccionada(null);
   };
 
   const aprobarSolicitud = async () => {
@@ -75,7 +94,8 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
         body: JSON.stringify({
           solicitudId: modalAprobar._id,
           usos: usos,
-          diasExpiracion: diasExpiracion
+          diasExpiracion: diasExpiracion,
+          institucionId: institucionSeleccionada || null
         })
       });
 
@@ -179,6 +199,20 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
               />
               <small>Cantidad de veces que se puede usar el código</small>
             </div>
+
+            {/* Si la solicitud no tiene institución definida, permitir que el admin elija una */}
+            {(!modalAprobar.institucion || !modalAprobar.institucion._id) && (
+              <div className="form-group">
+                <label>Seleccionar institución (opcional)</label>
+                <select value={institucionSeleccionada || ''} onChange={e => setInstitucionSeleccionada(e.target.value)} disabled={procesando}>
+                  <option value="">-- Usar institución de la solicitud --</option>
+                  {instituciones.map(inst => (
+                    <option key={inst._id} value={inst._id}>{inst.nombre}</option>
+                  ))}
+                </select>
+                <small>Si no seleccionas, se intentará resolver por nombre</small>
+              </div>
+            )}
 
             <div className="form-group">
               <label>Días hasta expiración:</label>

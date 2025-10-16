@@ -27,13 +27,14 @@
   overflow-x: auto;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tabla-solicitudes {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  table-layout: fixed; /* evita desbordes y mantiene alineación */
 }
 
 .tabla-solicitudes thead {
@@ -46,6 +47,45 @@
   text-align: left;
   font-weight: 600;
   border-bottom: 2px solid #2c3e50;
+  vertical-align: middle;
+}
+
+.tabla-solicitudes th:nth-child(1),
+.tabla-solicitudes td:nth-child(1) {
+  width: 12%;
+}
+.tabla-solicitudes th:nth-child(2),
+.tabla-solicitudes td:nth-child(2) {
+  width: 12%;
+}
+.tabla-solicitudes th:nth-child(3),
+.tabla-solicitudes td:nth-child(3) {
+  width: 20%;
+  word-wrap: break-word;
+}
+.tabla-solicitudes th:nth-child(4),
+.tabla-solicitudes td:nth-child(4) {
+  width: 10%;
+}
+.tabla-solicitudes th:nth-child(5),
+.tabla-solicitudes td:nth-child(5) {
+  width: 20%;
+}
+.tabla-solicitudes th:nth-child(6),
+.tabla-solicitudes td:nth-child(6) {
+  width: 10%;
+}
+.tabla-solicitudes th:nth-child(7),
+.tabla-solicitudes td:nth-child(7) {
+  width: 8%;
+}
+.tabla-solicitudes th:nth-child(8),
+.tabla-solicitudes td:nth-child(8) {
+  width: 8%;
+}
+
+.tabla-solicitudes td {
+  overflow-wrap: anywhere;
 }
 
 .tabla-solicitudes tbody tr {

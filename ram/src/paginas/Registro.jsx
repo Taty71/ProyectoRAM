@@ -47,6 +47,8 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         }
       } catch (err) {
         console.error("Error al obtener institución:", err);
+        const storedNombre = localStorage.getItem("institucionNombre");
+        if (storedNombre) setInstitucionNombre(storedNombre);
       }
     }
     fetchInstitucion();
@@ -95,11 +97,12 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
       storedInstitucionId: storedInstitucionId
     });
     
-    // ✅ Validar que exista institucionId
-    if (!storedInstitucionId) {
+    // Si no hay institucionId, intentamos enviar institucionNombre (fallback)
+    const storedInstitucionNombre = institucionNombre || localStorage.getItem("institucionNombre");
+    if (!storedInstitucionId && !storedInstitucionNombre) {
       setValidationError("Error: No se pudo obtener la institución");
       setNotif({ error: { message: "Error: No se pudo obtener la institución. Por favor, recarga la página." }, mensaje: "" });
-      setIsSubmitting(false); // ✅ AGREGADO
+      setIsSubmitting(false);
       return;
     }
     
@@ -109,7 +112,8 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         password, 
         nombre, 
         apellido, 
-        institucion: storedInstitucionId,
+        institucion: storedInstitucionId || null,
+        institucionNombre: storedInstitucionId ? undefined : storedInstitucionNombre,
         codigoInvitacion: codigo,
         rol 
       };

@@ -149,12 +149,16 @@ export function useErrorHandler() {
     setError(ErrorHandler.processValidationError(message, field));
   };
 
+  // Permite a los componentes establecer un error procesado manualmente
+  const setProcessedError = (err) => setError(err);
+
   return {
     error,
     isLoading,
     clearError,
     handleAsync,
     setValidationError,
+    setError: setProcessedError,
     formatError: (errorObj) => ErrorHandler.formatErrorMessage(errorObj),
     getErrorClass: (errorObj) => ErrorHandler.getErrorClass(errorObj)
   };

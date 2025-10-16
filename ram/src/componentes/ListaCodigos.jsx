@@ -5,7 +5,7 @@ import "../estilos/listaCodigos.css";
 
 function ListaCodigos() {
   const [codigos, setCodigos] = React.useState([]);
-  const { error, clearError } = useErrorHandler();
+  const { error, clearError, setError } = useErrorHandler();
   const [mensaje, setMensaje] = React.useState("");
   const [cargando, setCargando] = React.useState(false);
 
@@ -20,19 +20,23 @@ function ListaCodigos() {
           {
             headers: {
               "Authorization": `Bearer ${token}`
-            }
+            },
+            // Evitar respuestas 304 en caché que pueden confundir la UI
+            cache: 'no-cache'
           },
           "Error cargando códigos"
         );
         setCodigos(data.codigos || []);
       } catch (errorObj) {
-        setMensaje(errorObj.message || "Error cargando códigos");
+        // Usar setError del hook para mostrar notificación correctamente
+        setError(errorObj);
+        setMensaje(ErrorHandler.formatErrorMessage(errorObj) || "Error cargando códigos");
       } finally {
         setCargando(false);
       }
     };
     fetchCodigos();
-  }, [clearError]);
+  }, [clearError, setError]);
 
   return (
     <div className="lista-codigos-container">

@@ -31,24 +31,41 @@ function Registro({ setPantalla, institucionId, institucionNombre: institucionNo
         setInstitucionNombre(storedNombre);
       }
       
-      if (!storedId) return;
-      
+      // Si ya tenemos el id en props o localStorage, pedir datos específicos
+      if (storedId) {
+        try {
+          const res = await fetch(`http://localhost:3000/api/instituciones/${storedId}`);
+          const data = await res.json();
+          if (res.ok && data.institucion && data.institucion.nombre) {
+            setInstitucionNombre(data.institucion.nombre);
+            localStorage.setItem("institucionId", storedId);
+            localStorage.setItem("institucionNombre", data.institucion.nombre);
+            console.log('🏫 Institución guardada:', {
+              id: storedId,
+              nombre: data.institucion.nombre
+            });
+          }
+        } catch (err) {
+          console.error("Error al obtener institución por id:", err);
+          const storedNombre = localStorage.getItem("institucionNombre");
+          if (storedNombre) setInstitucionNombre(storedNombre);
+        }
+        return;
+      }
+
+      // Si no hay id, intentar obtener la institución 'activa' por API como fallback
       try {
-        const res = await fetch(`http://localhost:3000/api/instituciones/${storedId}`);
-        const data = await res.json();
-        if (res.ok && data.institucion && data.institucion.nombre) {
-          setInstitucionNombre(data.institucion.nombre);
-          localStorage.setItem("institucionId", storedId);
-          localStorage.setItem("institucionNombre", data.institucion.nombre);
-          console.log('🏫 Institución guardada:', {
-            id: storedId,
-            nombre: data.institucion.nombre
-          });
+        const resActiva = await fetch("http://localhost:3000/api/instituciones/activa");
+        const dataActiva = await resActiva.json();
+        if (resActiva.ok && dataActiva.institucion) {
+          const inst = dataActiva.institucion;
+          setInstitucionNombre(inst.nombre);
+          if (inst._id) localStorage.setItem("institucionId", inst._id);
+          localStorage.setItem("institucionNombre", inst.nombre);
+          console.log('🏫 Institución activa encontrada y guardada:', inst);
         }
       } catch (err) {
-        console.error("Error al obtener institución:", err);
-        const storedNombre = localStorage.getItem("institucionNombre");
-        if (storedNombre) setInstitucionNombre(storedNombre);
+        console.error("Error al obtener institución activa:", err);
       }
     }
     fetchInstitucion();

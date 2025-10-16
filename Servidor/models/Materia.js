@@ -42,7 +42,7 @@ const MateriaSchema = new mongoose.Schema({
   profesor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Usuario',
-    required: true
+    required: false
   },
   
   unidades: [{

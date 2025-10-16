@@ -5,7 +5,16 @@ const jwt = require('jsonwebtoken');
 exports.validarCodigo = async (req, res) => {
   try {
     const { codigo } = req.body;
-    const codigoInvitacion = await CodigoInvitacion.findOne({ codigo: codigo.toUpperCase(), activo: true, usosRestantes: { $gt: 0 } });
+    if (!codigo) return res.status(400).json({ error: 'Código es requerido' });
+    const codigoUpper = codigo.toUpperCase();
+    // Buscar de forma tolerante: soportar documentos antiguos sin campos `activo` o `usosRestantes`
+    const codigoInvitacion = await CodigoInvitacion.findOne({
+      codigo: codigoUpper,
+      $and: [
+        { $or: [{ activo: true }, { activo: { $exists: false } }] },
+        { $or: [{ usosRestantes: { $gt: 0 } }, { usosRestantes: { $exists: false } }] }
+      ]
+    });
     if (!codigoInvitacion) return res.status(404).json({ error: 'Código de invitación inválido, expirado o agotado' });
     if (codigoInvitacion.fechaExpiracion && codigoInvitacion.fechaExpiracion < new Date()) return res.status(400).json({ error: 'El código de invitación ha expirado' });
     res.json({ valido: true, rol: codigoInvitacion.rol, nombre: codigoInvitacion.nombre, apellido: codigoInvitacion.apellido, mensaje: `Código válido para registro de ${codigoInvitacion.rol}` });
@@ -81,7 +90,7 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.generarYEnviarCodigo = async (req, res) => {
-  const { solicitudId, usos, diasExpiracion } = req.body;
+  const { solicitudId, usos, diasExpiracion, institucionId: institucionIdOverride } = req.body;
   
   try {
     console.log('📨 Procesando aprobación de solicitud:', solicitudId);
@@ -119,12 +128,19 @@ exports.generarYEnviarCodigo = async (req, res) => {
 
     const rolNormalizado = solicitud.rol.toLowerCase();
     
-    let institucionId = solicitud.institucion;
+    // Preferir override enviado por el frontend (admin seleccionó institución)
+    let institucionId = institucionIdOverride || solicitud.institucion;
     if (!institucionId && solicitud.institucionNombre) {
       const Institucion = require('../models/Institucion');
-      const inst = await Institucion.findOne({ nombre: solicitud.institucionNombre });
-      if (inst) {
-        institucionId = inst._id;
+      // Buscar por código exacto o por nombre (case-insensitive)
+      const byCodigo = await Institucion.findOne({ codigo: solicitud.institucionNombre });
+      if (byCodigo) {
+        institucionId = byCodigo._id;
+      } else {
+        const escaped = solicitud.institucionNombre.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+        const regex = new RegExp('^' + escaped + '$', 'i');
+        const byName = await Institucion.findOne({ nombre: regex });
+        if (byName) institucionId = byName._id;
       }
     }
 

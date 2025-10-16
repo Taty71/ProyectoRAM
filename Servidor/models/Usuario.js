@@ -41,7 +41,7 @@ const UsuarioSchema = new mongoose.Schema({
   
   dni: {
     type: String,
-    required: true,
+    required: false,
     unique: true,
     trim: true
   },
@@ -123,6 +123,9 @@ const UsuarioSchema = new mongoose.Schema({
   timestamps: true,
   collection: 'usuarios'
 });
+
+// Crear índice único y sparse para dni (único cuando exista, pero permite documentos sin dni)
+UsuarioSchema.index({ dni: 1 }, { unique: true, sparse: true });
 
 // Middleware para hashear password antes de guardar
 UsuarioSchema.pre('save', async function(next) {

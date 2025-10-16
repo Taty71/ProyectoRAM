@@ -25,6 +25,19 @@ const CodigoInvitacionSchema = new mongoose.Schema({
     ref: 'Institucion',
     required: true
   },
+  // campos para control de usos y estado (agregados para compatibilidad con controladores)
+  usosMaximos: {
+    type: Number,
+    default: 1
+  },
+  usosRestantes: {
+    type: Number,
+    default: 1
+  },
+  activo: {
+    type: Boolean,
+    default: true
+  },
   usado: {
     type: Boolean,
     default: false

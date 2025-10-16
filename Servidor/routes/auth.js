@@ -30,7 +30,7 @@ router.post('/registro/usuario', [
   body('apellido').notEmpty().trim().escape(),
   body('dni').optional({ nullable: true, checkFalsy: true }).trim(), // ✅ CAMBIO: ahora es opcional
   body('rol').isIn(['administrador', 'profesor', 'jefe_area']),
-  body('institucion').isMongoId(),
+  body('institucion').optional({ nullable: true, checkFalsy: true }).isMongoId(),
   body('codigoInvitacion').notEmpty().trim()
 ], registroController.registroUsuario);
 

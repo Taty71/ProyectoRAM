@@ -58,7 +58,35 @@ function ProfesorDashboard({ setPantalla }) {
         throw new Error(`Error cargando materias: ${res.status} ${txt}`);
       }
       const data = await res.json();
-      setMaterias(Array.isArray(data) ? data : data.materias || []);
+      let materiasFromApi = Array.isArray(data) ? data : data.materias || [];
+
+      // Fallback: algunos escenarios (migraciones/assigns) almacenan las materias en el usuario
+      // pero no establecen el campo `materia.profesor`. Si la consulta por ?profesor=... no
+      // devolvió resultados, intentamos obtener la lista de materias desde el usuario y
+      // recuperarlas individualmente para mostrarlas en el panel del profesor.
+      if ((Array.isArray(materiasFromApi) && materiasFromApi.length === 0) && userId) {
+        try {
+          const ures = await fetch(`${API_BASE_URL}/api/usuarios/${userId}`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) } });
+          if (ures.ok) {
+            const usuario = await ures.json();
+            const ids = Array.isArray(usuario.materias) ? usuario.materias.map(m => (m._id || m.id || m).toString()) : [];
+            if (ids.length > 0) {
+              const materiasFetched = await Promise.all(ids.map(async (id) => {
+                try {
+                  const r = await fetch(`${API_BASE_URL}/api/materias/${id}`, { headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) } });
+                  if (r.ok) return await r.json();
+                } catch { /* ignore individual failures */ }
+                return null;
+              }));
+              materiasFromApi = materiasFetched.filter(Boolean);
+            }
+          }
+        } catch (uerr) {
+          console.warn('fetchMaterias fallback usuario.materias failed', uerr);
+        }
+      }
+
+      setMaterias(materiasFromApi || []);
     } catch (err) {
       console.error('fetchMaterias error', err);
       setError({ message: String(err) });

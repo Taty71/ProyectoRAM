@@ -126,7 +126,7 @@ useEffect(() => {
     <div>
       {pantalla === "verificando" && (
         <div className="verificando-bg">
-          <img src="/logo-ram.png" alt="Logo RAM" className="presentacion-logo" />
+          <img src="/logoRAM.png" alt="Logo RAM" className="presentacion-logo" />
           <p className="verificando-texto">Verificando configuración del sistema...</p>
         </div>
       )}
@@ -139,7 +139,7 @@ useEffect(() => {
       
       {pantalla === "presentacion" && (
         <div className="presentacion-bg presentacion-flex">
-          <img src="/logo-ram.png" alt="Logo RAM" className="presentacion-logo presentacion-logo-bienvenida" />
+          <img src="/logoRAM.png" alt="Logo RAM" className="presentacion-logo presentacion-logo-bienvenida" />
           <h1 className="presentacion-titulo">
             Bienvenido al Sistema R.A.M.
           </h1>

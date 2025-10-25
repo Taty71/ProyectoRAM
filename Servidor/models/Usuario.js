@@ -4,13 +4,12 @@ const bcrypt = require('bcryptjs');
 const UsuarioSchema = new mongoose.Schema({
   ciclo: {
     type: String,
-    enum: ['cbu', 'segundo'],
+    enum: ['primer:cbu', 'segundo'],
     required: false
   },
   email: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     lowercase: true
   },
@@ -23,7 +22,7 @@ const UsuarioSchema = new mongoose.Schema({
   
   rol: {
     type: String,
-    enum: ['administrador', 'profesor', 'jefe_area'],
+    enum: ['administrador', 'profesor', 'jefe_area', 'estudiante'],
     required: true
   },
   
@@ -41,8 +40,7 @@ const UsuarioSchema = new mongoose.Schema({
   
   dni: {
     type: String,
-    required: false,
-    unique: true,
+    required: true, // allow missing DNI while we backfill existing users
     trim: true
   },
   
@@ -51,38 +49,34 @@ const UsuarioSchema = new mongoose.Schema({
     ref: 'Institucion',
     required: true
   },
+  institucionNombre: {
+    type: String,
+    required: true,
+    trim: true
+  },
   
   especialidades: [{
     type: String,
     trim: true
   }],
   
-  materias: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Materia'
-  }],
+  // Campos específicos para estudiantes
+  anio: {
+    type: Number,
+    required: false
+  },
+  division: {
+    type: String,
+    required: false
+  },
+  fechaNacimiento: {
+    type: Date,
+    required: false
+  },
   
-  cursosACargo: [{
-    especialidad: {
-      type: String,
-      enum: ['CBU', 'Electricidad', 'Programación'],
-      required: true
-    },
-    cursos: [{
-      curso: {
-        type: Number,
-        required: true
-      },
-      division: {
-        type: String,
-        required: true
-      }
-    }],
-    cicloAcademico: {
-      type: Number,
-      required: true
-    }
-    }],
+  // Note: `materias` and `cursosACargo` were removed because those
+  // relationships are managed in separate collections when assigning
+  // materias/cursos to users. Keep student-specific fields above.
   
   permisos: {
     verReportes: {
@@ -124,8 +118,11 @@ const UsuarioSchema = new mongoose.Schema({
   collection: 'usuarios'
 });
 
-// Crear índice único y sparse para dni (único cuando exista, pero permite documentos sin dni)
-UsuarioSchema.index({ dni: 1 }, { unique: true, sparse: true });
+// NOTE: previously the code created a unique index on `dni`.
+// Keep schema-level definition here but do NOT create the unique index automatically
+// because the database currently contains users without dni and indexes must be
+// created after data cleanup. To add a unique index later run a maintenance script
+// once all users have valid, unique DNIs.
 
 // Middleware para hashear password antes de guardar
 UsuarioSchema.pre('save', async function(next) {

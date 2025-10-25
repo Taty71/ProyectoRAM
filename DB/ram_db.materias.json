@@ -1,0 +1,1108 @@
+[{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df3"
+  },
+  "nombre": "Matemática I",
+  "codigo": "MAT1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.069Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.362Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df6"
+  },
+  "nombre": "Lengua y Literatura I",
+  "codigo": "LEN1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 1,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.076Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T20:10:14.234Z"
+  },
+  "__v": 0,
+  "division": "A",
+  "cargaHoraria": {
+    "horario": "Miércoles: 7:30-8:50 | Viernes: 7:30-8:50",
+    "dias": [
+      "Viernes",
+      "Miércoles"
+    ]
+  },
+  "ciclo": "CBU"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751df9"
+  },
+  "nombre": "Física I",
+  "codigo": "FIS1A",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "",
+  "año": 1,
+  "profesor": {
+    "$oid": "68fb6ca6db13f247f70d8d12"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.081Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T23:19:48.159Z"
+  },
+  "__v": 0,
+  "division": "A",
+  "cargaHoraria": {
+    "horario": "Lunes: 10:20-11:50 | Jueves: 7:30-8:10",
+    "dias": [
+      "Jueves",
+      "Lunes"
+    ]
+  },
+  "ciclo": "CBU"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751dfc"
+  },
+  "nombre": "Educación Tecnologíca II",
+  "codigo": "ETEC1",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "",
+  "año": 2,
+  "profesor": {
+    "$oid": "68fb6bf8db13f247f70d8d02"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.090Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T20:43:56.964Z"
+  },
+  "__v": 0,
+  "ciclo": "CBU",
+  "division": "A",
+  "cargaHoraria": {
+    "horasSemanales": 4,
+    "horario": "Lunes: 9:00-10:20 | Martes: 11:10-12:40",
+    "dias": [
+      "Lunes",
+      "Martes"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751dff"
+  },
+  "nombre": "Matemática II",
+  "codigo": "MAT2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.095Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.399Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e02"
+  },
+  "nombre": "Lengua y Literatura II",
+  "codigo": "LEN2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.100Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.405Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e05"
+  },
+  "nombre": "Física II",
+  "codigo": "FIS2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de6"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.107Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.408Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e08"
+  },
+  "nombre": "Educación Tecnologica II",
+  "codigo": "ETEC2",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 2,
+  "profesor": {
+    "$oid": "68fb6bf8db13f247f70d8d02"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.113Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T19:40:18.612Z"
+  },
+  "__v": 0,
+  "ciclo": "CBU",
+  "division": "B",
+  "cargaHoraria": {
+    "horasSemanales": 4,
+    "horario": "Martes: 10:30-11:50 | Viernes: 10:30-11:50",
+    "dias": [
+      "Viernes",
+      "Martes"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e0b"
+  },
+  "nombre": "Matemática III",
+  "codigo": "MAT3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.120Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.414Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e0e"
+  },
+  "nombre": "Lengua y Literatura III",
+  "codigo": "LEN3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de3"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.125Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.417Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e11"
+  },
+  "nombre": "Física III",
+  "codigo": "FIS3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de6"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.130Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.420Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e14"
+  },
+  "nombre": "Introducción a la Electricidad",
+  "codigo": "IEL3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.134Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.423Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e17"
+  },
+  "nombre": "Introducción a la Programación",
+  "codigo": "IPR3",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "CBU",
+  "año": 3,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": false,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.140Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.425Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e1a"
+  },
+  "nombre": "Circuitos Eléctricos I",
+  "codigo": "CEL4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.145Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.427Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e1d"
+  },
+  "nombre": "Electrónica Analógica I",
+  "codigo": "EAN4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.150Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.429Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e20"
+  },
+  "nombre": "Instalaciones Eléctricas I",
+  "codigo": "IEL4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.431Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e23"
+  },
+  "nombre": "Matemática Aplicada",
+  "codigo": "MAP4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.161Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.433Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e26"
+  },
+  "nombre": "Circuitos Eléctricos II",
+  "codigo": "CEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.166Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.435Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e29"
+  },
+  "nombre": "Electrónica Digital",
+  "codigo": "EDI5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.172Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.437Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e2c"
+  },
+  "nombre": "Instalaciones Eléctricas II",
+  "codigo": "IEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.178Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.440Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e2f"
+  },
+  "nombre": "Máquinas Eléctricas I",
+  "codigo": "MEL5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 5,
+  "profesor": {
+    "$oid": "68fb6ca6db13f247f70d8d12"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.182Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T20:45:23.893Z"
+  },
+  "__v": 0,
+  "division": "A",
+  "cargaHoraria": {
+    "horasSemanales": 3,
+    "horario": "Lunes: 7:30-8:50 | Jueves: 7:30-8:50",
+    "dias": [
+      "Lunes"
+    ]
+  },
+  "ciclo": "Segundo"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e32"
+  },
+  "nombre": "Formación de Ambiente de Trabajo",
+  "codigo": "FATA7",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "electricidad",
+  "año": 7,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.189Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T02:37:21.494Z"
+  },
+  "__v": 0,
+  "ciclo": "segundo",
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e35"
+  },
+  "nombre": "Automatización Industrial",
+  "codigo": "AIN6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de9"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.443Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e38"
+  },
+  "nombre": "Máquinas Eléctricas II",
+  "codigo": "MEL6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Electricidad",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dda"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.198Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.444Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e3b"
+  },
+  "nombre": "Programación I",
+  "codigo": "PI4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programacion",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.204Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:50:08.422Z"
+  },
+  "__v": 0,
+  "division": "B",
+  "ciclo": "segundo"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e3e"
+  },
+  "nombre": "Estructuras de Datos I",
+  "codigo": "EDA4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751dec"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.210Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.447Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e41"
+  },
+  "nombre": "Sistemas Operativos I",
+  "codigo": "SOP4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.214Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.449Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e44"
+  },
+  "nombre": "Matemática Discreta",
+  "codigo": "MAD4",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 4,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751de0"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.220Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.451Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e47"
+  },
+  "nombre": "Programación II",
+  "codigo": "PROGII",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68fb6bf8db13f247f70d8d02"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.225Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T20:27:33.888Z"
+  },
+  "__v": 0,
+  "division": "B",
+  "cargaHoraria": {
+    "horasSemanales": 6,
+    "horario": "Martes: 7:30-9:40 | Jueves: 15:40-17:50",
+    "dias": [
+      "Jueves",
+      "Martes"
+    ]
+  },
+  "ciclo": "Segundo"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e4a"
+  },
+  "nombre": "Base de Datos I",
+  "codigo": "BDA5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751def"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.229Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.456Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e4d"
+  },
+  "nombre": "Desarrollo Web I",
+  "codigo": "DWE5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.233Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.458Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e50"
+  },
+  "nombre": "Ingeniería de Software I",
+  "codigo": "ISW5",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 5,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.460Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e53"
+  },
+  "nombre": "Formación Ambiente Trabajo",
+  "codigo": "FATB7",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programacion",
+  "año": 7,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.245Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T20:37:01.419Z"
+  },
+  "__v": 0,
+  "ciclo": "Segundo",
+  "division": "B",
+  "cargaHoraria": {
+    "horasSemanales": 10,
+    "horario": "Miércoles: 7:30-12:40 | Jueves: 17:10-19:20",
+    "dias": [
+      "Miércoles",
+      "Jueves"
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e56"
+  },
+  "nombre": "Base de Datos II",
+  "codigo": "BDA6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751def"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.464Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68adcbea9fa3ac7671751e59"
+  },
+  "nombre": "Desarrollo Web II",
+  "codigo": "DWE6",
+  "institucion": {
+    "$oid": "689378d663fcb14637380ee2"
+  },
+  "especialidad": "Programación",
+  "año": 6,
+  "profesor": {
+    "$oid": "68adcbe99fa3ac7671751ddd"
+  },
+  "cicloAcademico": 2025,
+  "activa": true,
+  "unidades": [],
+  "createdAt": {
+    "$date": "2025-08-26T14:59:54.256Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-17T03:41:01.465Z"
+  },
+  "__v": 0,
+  "division": "A"
+},
+{
+  "_id": {
+    "$oid": "68f1896681b6b6fd0b13e845"
+  },
+  "nombre": "Informática Aplicada I",
+  "codigo": "IAI4",
+  "institucion": {
+    "$oid": "68cf0da899777a5ee78c3e45"
+  },
+  "ciclo": "Segundo",
+  "especialidad": "Programación",
+  "año": 4,
+  "activa": true,
+  "unidades": [],
+  "cicloAcademico": 2025,
+  "createdAt": {
+    "$date": "2025-10-17T00:10:14.459Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T20:16:59.237Z"
+  },
+  "__v": 0,
+  "division": "B",
+  "cargaHoraria": {
+    "horasSemanales": 4,
+    "horario": "Jueves: 10:10-11:20 | Viernes: 09:00-10:20",
+    "dias": [
+      "Viernes",
+      "Jueves"
+    ]
+  },
+  "profesor": {
+    "$oid": "68fb6c48db13f247f70d8d0a"
+  }
+},
+{
+  "_id": {
+    "$oid": "68f1ac701491bf28b6e24766"
+  },
+  "nombre": "Aplicaciones de Nuevas Tecnologías",
+  "codigo": "ANTB7",
+  "institucion": {
+    "$oid": "68cf0da899777a5ee78c3e45"
+  },
+  "ciclo": "Segundo",
+  "especialidad": "Programación",
+  "año": 7,
+  "division": "B",
+  "activa": true,
+  "unidades": [],
+  "cicloAcademico": 2025,
+  "createdAt": {
+    "$date": "2025-10-17T02:39:44.764Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-25T12:41:23.355Z"
+  },
+  "__v": 0,
+  "cargaHoraria": {
+    "horasSemanales": 6,
+    "horario": "Lunes: 17:10-19:20 | Miércoles: 16:30-18:40",
+    "dias": [
+      "Lunes",
+      "Miércoles"
+    ]
+  },
+  "profesor": {
+    "$oid": "68fcc477d048899188c96da5"
+  }
+},
+{
+  "_id": {
+    "$oid": "68fa523e5b62ddce2b22d715"
+  },
+  "nombre": "Física I",
+  "codigo": "FIS1B",
+  "institucion": {
+    "$oid": "68cf0da899777a5ee78c3e45"
+  },
+  "ciclo": "CBU",
+  "año": 1,
+  "division": "B",
+  "cargaHoraria": {
+    "horario": "Lunes: 9:00-10:20 | Miércoles: 10:20-11:50",
+    "dias": [
+      "Miércoles",
+      "Lunes"
+    ]
+  },
+  "activa": true,
+  "cicloAcademico": 2025,
+  "createdAt": {
+    "$date": "2025-10-23T16:05:18.047Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T23:22:22.879Z"
+  },
+  "__v": 0,
+  "especialidad": "",
+  "profesor": {
+    "$oid": "68fb6ca6db13f247f70d8d12"
+  }
+},
+{
+  "_id": {
+    "$oid": "68fc07ce981d2e5122cb0701"
+  },
+  "nombre": "Física I",
+  "codigo": "FIS1C",
+  "institucion": {
+    "$oid": "68cf0da899777a5ee78c3e45"
+  },
+  "ciclo": "CBU",
+  "especialidad": "",
+  "año": 1,
+  "profesor": {
+    "$oid": "68fb6ca6db13f247f70d8d12"
+  },
+  "division": "C",
+  "cargaHoraria": {
+    "horasSemanales": 3,
+    "dias": [
+      "Lunes",
+      "Jueves"
+    ]
+  },
+  "activa": true,
+  "cicloAcademico": 2025,
+  "createdAt": {
+    "$date": "2025-10-24T23:12:14.896Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-24T23:15:00.870Z"
+  },
+  "__v": 0
+}]

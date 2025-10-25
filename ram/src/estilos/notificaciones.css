@@ -9,16 +9,18 @@
 
 .notification-container {
   position: fixed;
-  bottom: 32px;
+  top: 24px; /* moved to top-center for better visibility above modals */
+  bottom: auto;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
-  max-width: 400px;
+  z-index: 2147483647 !important; /* máximo posible, siempre sobre overlays */
+  max-width: 600px; /* allow wider messages to show without wrapping too much */
   width: 100%;
-  pointer-events: none;
+  pointer-events: none !important; /* container should not capture pointer events */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 12px; /* safe padding on sides for small viewports */
 }
 
 .notification {
@@ -28,13 +30,19 @@
   margin-bottom: 16px;
   box-shadow: 0 6px 24px rgba(44, 62, 80, 0.13);
   border-left: 5px solid;
-  pointer-events: auto;
+  pointer-events: auto !important; /* allow interacting with close button even if container is non-interactive */
   animation: slideUp 0.35s ease-out;
   position: relative;
   display: flex;
   align-items: flex-start;
   gap: 14px;
   min-width: 260px;
+}
+
+/* Debug visual aid: enable by setting window.__ram_debug_notifications = true in the console */
+.notification.debug-visible {
+  outline: 2px dashed rgba(255, 0, 0, 0.85);
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.08);
 }
 
 .notification-error {
@@ -172,7 +180,8 @@
   .notification-container {
     left: 16px;
     right: 16px;
-    bottom: 16px;
+    top: 16px;
+    bottom: auto;
     max-width: none;
   }
 

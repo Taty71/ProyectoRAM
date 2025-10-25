@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
+// ErrorHandler not needed here after migrating notifications to context
 import SetupInstitucion from "../componentes/SetupInstitucion";
 import SetupAdmin from "../componentes/SetupAdmin";
 import NotificationManager from "../utils/NotificationManager";
@@ -11,9 +11,8 @@ import "../estilos/SetupProgress.css";
 function Setup({ onSetupComplete }) {
   const [paso, setPaso] = useState(1); // 1: Institución, 2: Administrador
   const [cargando, setCargando] = useState(false);
-  const [mensaje, setMensaje] = useState("");
-  // ErrorHandler hook
-  const { error, clearError } = useErrorHandler();
+  // local inline message state removed; use NotificationManager via context when needed
+  // Error handling moved to NotificationContext; no local hook required here
 
   // Datos de la institución
   const [institucion, setInstitucion] = useState({
@@ -98,7 +97,6 @@ function Setup({ onSetupComplete }) {
             erroresCampos={erroresCampos}
             setErroresCampos={setErroresCampos}
             setPaso={setPaso}
-            setMensaje={setMensaje}
             cargando={cargando}
             setCargando={setCargando}
           />
@@ -110,7 +108,6 @@ function Setup({ onSetupComplete }) {
             erroresCampos={erroresCampos}
             setErroresCampos={setErroresCampos}
             setPaso={setPaso}
-            setMensaje={setMensaje}
             cargando={cargando}
             setCargando={setCargando}
             onSetupComplete={onSetupComplete}
@@ -118,12 +115,7 @@ function Setup({ onSetupComplete }) {
         )}
   {/* Mensajes inline eliminados, solo NotificationManager */}
       </div>
-      <NotificationManager 
-        error={error}
-        mensaje={mensaje}
-        onClearError={clearError}
-        onClearMensaje={() => setMensaje("")}
-      />
+      <NotificationManager />
     </div>
   );
 }

@@ -22,7 +22,7 @@ const MateriaSchema = new mongoose.Schema({
   
   ciclo: {
     type: String,
-    enum: ['CBU', 'segundo'],
+    enum: ['CBU', 'Segundo'],
     required: true,
     trim: true
   },
@@ -44,25 +44,12 @@ const MateriaSchema = new mongoose.Schema({
     ref: 'Usuario',
     required: false
   },
-  
-  unidades: [{
-    nombre: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    contenidos: [{
-      type: String,
-      trim: true
-    }],
-    orden: {
-      type: Number,
-      required: true
-    },
-    fechaInicio: Date,
-    fechaFin: Date
-  }],
-  
+  division: {
+    type: String,
+    required: false,
+    trim: true
+  },
+   
   cicloAcademico: {
     type: Number,
     required: true,
@@ -71,7 +58,16 @@ const MateriaSchema = new mongoose.Schema({
   
   cargaHoraria: {
     horasSemanales: Number,
-    horasTotales: Number
+    horasTotales: Number,
+    // horario libre para indicar turno/horario (ej: 'Mañana', 'Tarde', '14:00-16:00')
+    horario: {
+      type: String,
+      required: false,
+      trim: true
+    }
+    ,
+    // días de la semana en los que se dicta la materia (ej: ['Lunes','Miércoles'])
+    dias: [{ type: String, trim: true }]
   },
   
   activa: {

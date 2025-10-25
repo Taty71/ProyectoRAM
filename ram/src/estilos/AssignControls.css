@@ -1,0 +1,193 @@
+/* Compact day-checkbox and day-horario for editar/agregar materia modals */
+.editar-materia-form .day-checkbox {
+  width: 6px !important;
+  height: 6px !important;
+  margin-right: 5px !important;
+  border: 1px solid #cfd8dc !important;
+  border-radius: 2px !important;
+  background-color: #fff !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  transition: transform 100ms ease, box-shadow 140ms ease,
+    background-color 100ms ease, border-color 100ms ease !important;
+  transform-origin: center center !important;
+}
+.editar-materia-form .day-checkbox:checked {
+  background-color: #1976d2 !important;
+  border-color: #1976d2 !important;
+  box-shadow: 0 2px 6px rgba(25, 118, 210, 0.1) !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'><path fill='none' stroke='%23fff' stroke-width='1.2' d='M1 5.2 L4.5 8.2 L11 1.2'/></svg>") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 70% 70% !important;
+  transform: scale(1.01) !important;
+}
+.editar-materia-form .day-horario {
+  flex: 1 !important;
+  padding: 4px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.92rem !important;
+  height: 32px !important;
+  border: 1px solid #e6edf2 !important;
+  box-sizing: border-box !important;
+}
+.assign-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+}
+.assign-controls label {
+  font-weight: 600;
+  color: #123;
+  padding-left: 4px;
+}
+.assign-controls input,
+.assign-controls select {
+  padding: 10px 12px;
+  border: 1px solid #d7dde0;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* Force compact styles for day-checkbox and day-horario inside assign-controls, override modal/global input rules */
+.assign-controls .day-checkbox {
+  width: 8px !important;
+  height: 8px !important;
+  margin-right: 6px !important;
+  border: 1px solid #cfd8dc !important;
+  border-radius: 2px !important;
+  background-color: #fff !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
+  cursor: pointer !important;
+  transition: transform 100ms ease, box-shadow 140ms ease,
+    background-color 100ms ease, border-color 100ms ease !important;
+  transform-origin: center center !important;
+}
+.assign-controls .day-checkbox:checked {
+  background-color: #1976d2 !important;
+  border-color: #1976d2 !important;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.1) !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'><path fill='none' stroke='%23fff' stroke-width='1.6' d='M1 5.2 L4.5 8.2 L11 1.2'/></svg>") !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: 80% 80% !important;
+  transform: scale(1.01) !important;
+}
+.assign-controls .day-horario {
+  flex: 1 !important;
+  padding: 4px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.92rem !important;
+  height: 32px !important;
+  border: 1px solid #e6edf2 !important;
+  box-sizing: border-box !important;
+}
+.assign-controls .actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.days-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.days-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Custom small checkbox so it renders consistently and very compact across browsers
+   We hide the native appearance and draw a tiny square. When checked we show a small
+   white tick (SVG data URI) and a subtle shadow. */
+.day-checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  /* denser, very compact checkbox */
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border: 1px solid #cfd8dc;
+  border-radius: 2px;
+  background-color: #fff;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 140ms ease,
+    background-color 100ms ease, border-color 100ms ease;
+  transform-origin: center center;
+}
+
+/* Checked: blue fill + white tick (SVG) + slight scale */
+.day-checkbox:checked {
+  background-color: #1976d2;
+  border-color: #1976d2;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.1);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'><path fill='none' stroke='%23fff' stroke-width='1.6' d='M1 5.2 L4.5 8.2 L11 1.2'/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* visible but proportional to small box */
+  background-size: 80% 80%;
+  transform: scale(1.01);
+}
+
+/* Hover: slight lift to indicate interactiveness */
+.day-checkbox:hover {
+  transform: scale(1.04);
+}
+
+/* make the day label slightly smaller to match the compact checkbox */
+.day-label {
+  font-size: 0.95rem;
+}
+.day-label .day-checkbox {
+  /* stronger selector to override other styles (e.g. gestion_materias.css) */
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border: 1px solid #cfd8dc;
+  border-radius: 2px;
+  background-color: #fff;
+  vertical-align: middle;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 100ms ease, box-shadow 140ms ease,
+    background-color 100ms ease, border-color 100ms ease;
+  transform-origin: center center;
+}
+
+.day-label .day-checkbox:checked {
+  background-color: #1976d2;
+  border-color: #1976d2;
+  box-shadow: 0 4px 10px rgba(25, 118, 210, 0.1);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'><path fill='none' stroke='%23fff' stroke-width='1.6' d='M1 5.2 L4.5 8.2 L11 1.2'/></svg>");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80% 80%;
+  transform: scale(1.01);
+}
+.day-horario {
+  flex: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 0.92rem;
+  height: 32px;
+  border: 1px solid #e6edf2;
+  box-sizing: border-box;
+}
+.day-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+@media (max-width: 720px) {
+  .days-grid {
+    grid-template-columns: 1fr;
+  }
+}

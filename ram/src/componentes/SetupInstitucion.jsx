@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { institucionSchema } from "../utils/validatorYup";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
+import { useNotification } from '../hooks/useNotification';
 import InputText from "./InputText";
 import InputSelect from "./InputSelect";
 import "../estilos/SetupInstitucion.css";
@@ -21,13 +22,12 @@ function SetupInstitucion({
   erroresCampos,
   setErroresCampos,
   setPaso,
-  setMensaje,
   cargando,
   setCargando
 }) {
   const { error, clearError, setValidationError, formatError } = useErrorHandler();
   // ...existing code...
-  const [mensajeLocal, setMensajeLocal] = React.useState("");
+  const { notify } = useNotification();
   const [showModal, setShowModal] = useState(false);
   const [checkedEspecialidades, setCheckedEspecialidades] = useState([]);
   const handleInstitucionChange = (e) => {
@@ -129,10 +129,9 @@ function SetupInstitucion({
         },
         "Error al crear la institución"
       );
-  setMensajeLocal("Institución creada exitosamente");
+  notify("Institución creada exitosamente");
       setTimeout(() => {
         setPaso(2);
-        setMensaje("");
       }, 1500);
     } catch (err) {
       if (err.name === 'ValidationError') {
@@ -294,12 +293,7 @@ function SetupInstitucion({
           {formatError(error)}
         </div>
       )}
-      {mensajeLocal && (
-        <div className="setup-success-message">
-          <span style={{fontSize: '1.3em', marginRight: '0.5em', verticalAlign: 'middle'}}>✅</span>
-          {mensajeLocal}
-        </div>
-      )}
+      {/* success messages are shown via NotificationContext */}
     </form>
   );
 }

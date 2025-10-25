@@ -23,8 +23,9 @@ function Recuperar({ setPantalla }) {
       } else {
         setError(data.error || "No se pudo enviar el correo.");
       }
-    } catch {
+    } catch (err) {
       setError("Error de conexión");
+      void err;
     }
   };
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import "../estilos/colores.css";
 import "../estilos/dashboard.css";
 import "../estilos/autoevaluacion.css";
-import logo from "../assets/logo-ram.png";
+import logo from "../assets/logoRAM.png";
 
 function EstudianteAutoevaluacion({ setPantalla }) {
   // HOOK useState: Gestiona el estado local del componente

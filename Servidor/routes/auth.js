@@ -12,7 +12,8 @@ const SolicitudCodigo = require('../models/SolicitudCodigo');
 
 const loginController = require('../controllers/loginController');
 router.post('/login/usuario', [
-  body('email').isEmail().normalizeEmail(),
+  // Ahora el sistema usa DNI como identificador único para login
+  body('dni').matches(/^\d{7,8}$/).withMessage('DNI inválido (7-8 dígitos)').trim(),
   body('password').isLength({ min: 6 })
 ], loginController.loginUsuario);
 
@@ -29,7 +30,7 @@ router.post('/registro/usuario', [
   body('nombre').notEmpty().trim().escape(),
   body('apellido').notEmpty().trim().escape(),
   body('dni').optional({ nullable: true, checkFalsy: true }).trim(), // ✅ CAMBIO: ahora es opcional
-  body('rol').isIn(['administrador', 'profesor', 'jefe_area']),
+  body('rol').isIn(['administrador', 'profesor', 'jefe_area', 'estudiante']),
   body('institucion').optional({ nullable: true, checkFalsy: true }).isMongoId(),
   body('codigoInvitacion').notEmpty().trim()
 ], registroController.registroUsuario);

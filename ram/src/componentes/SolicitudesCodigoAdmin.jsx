@@ -1,14 +1,14 @@
 import { useEffect, useState, useCallback } from "react"; // Agregar useCallback
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
 import NotificationManager from "../utils/NotificationManager";
+import { useNotification } from '../hooks/useNotification';
 import "../estilos/SolicitudesCodigoAdmin.css";
 
 function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
   const [solicitudes, setSolicitudes] = useState([]);
   const [loading, setLoading] = useState(true);
   const { clearError } = useErrorHandler();
-  const [mensaje, setMensaje] = useState("");
-  const [errorNotif, setErrorNotif] = useState(null);
+  const { notify, notifyError } = useNotification();
   const [confirmNotif, setConfirmNotif] = useState(null);
   
   // Modal de aprobación
@@ -18,6 +18,8 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
   const [instituciones, setInstituciones] = useState([]);
   const [institucionSeleccionada, setInstitucionSeleccionada] = useState(null);
   const [procesando, setProcesando] = useState(false);
+  const [forceApproveLocal] = useState(false);
+  const [successResult, setSuccessResult] = useState(null);
 
   // Usar useCallback para evitar el warning
   const cargarSolicitudes = useCallback(() => {
@@ -54,10 +56,10 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
     })
     .catch(err => {
       console.error("Error cargando solicitudes:", err);
-      setErrorNotif({ message: "Error al cargar solicitudes" });
+      notifyError('Error al cargar solicitudes');
       setLoading(false);
     });
-}, [institucionId, institucionNombre]);
+}, [institucionId, institucionNombre, notifyError]);
 
   useEffect(() => {
     cargarSolicitudes();
@@ -79,6 +81,12 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
     setInstitucionSeleccionada(null);
   };
 
+  // Determine if current user can approve: admin role in localStorage OR force via URL (for testing)
+  const currentRole = (localStorage.getItem('rol') || '').toString().toLowerCase();
+  const forceApprove = typeof window !== 'undefined' && window.location && window.location.search && window.location.search.indexOf('forceApprove=1') !== -1;
+  // approval control (not used to hide button now; kept for future):
+  const _canApprove = currentRole === 'administrador' || currentRole === 'admin' || forceApprove || forceApproveLocal;
+
   const aprobarSolicitud = async () => {
     if (!modalAprobar) return;
     
@@ -86,10 +94,12 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
     clearError();
     
     try {
+      const token = localStorage.getItem('token');
       const res = await fetch("http://localhost:3000/api/auth/generar-enviar-codigo", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {})
         },
         body: JSON.stringify({
           solicitudId: modalAprobar._id,
@@ -102,15 +112,25 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
       const data = await res.json();
 
       if (res.ok) {
-        setMensaje(`✅ Código ${data.codigo} generado y enviado a ${data.email}`);
+        // mostrar y copiar código
+        const mensaje = `✅ Código ${data.codigo} generado y enviado a ${data.email}`;
+        notify(mensaje);
+        try {
+          if (navigator && navigator.clipboard && data.codigo) {
+            await navigator.clipboard.writeText(data.codigo);
+            notify('Código copiado al portapapeles');
+          }
+  } catch { /* ignore clipboard errors */ }
+        // set success result for modal
+        setSuccessResult({ codigo: data.codigo, email: data.email, nombre: modalAprobar.nombre, apellido: modalAprobar.apellido, dni: modalAprobar.dni, rol: modalAprobar.rol });
         setModalAprobar(null);
         cargarSolicitudes(); // Recargar lista
       } else {
-        setErrorNotif({ message: data.error || "Error al generar código" });
+        notifyError(data.error || "Error al generar código");
       }
     } catch (error) {
       console.error("Error al aprobar solicitud:", error);
-      setErrorNotif({ message: "Error de conexión al aprobar solicitud" });
+      notifyError('Error de conexión al aprobar solicitud');
     } finally {
       setProcesando(false);
     }
@@ -133,13 +153,13 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
       });
       if (res.ok) {
         setSolicitudes(solicitudes.filter(s => s._id !== id));
-        setMensaje("Solicitud eliminada correctamente.");
+        notify('Solicitud eliminada correctamente.');
       } else {
         const err = await ErrorHandler.processApiError(res, "No se pudo eliminar la solicitud");
-        setErrorNotif(err);
+        notifyError(err.message || 'No se pudo eliminar la solicitud');
       }
     } catch (e) {
-      setErrorNotif(ErrorHandler.processNetworkError(e, "Error de conexión al eliminar."));
+      notifyError(ErrorHandler.processNetworkError(e, "Error de conexión al eliminar.").message || 'Error de conexión al eliminar.');
     }
   };
 
@@ -147,14 +167,7 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
     <div className="solicitudes-codigo-admin">
       <h2>📨 Solicitudes de Código de Invitación</h2>
       
-      <NotificationManager
-        error={errorNotif}
-        mensaje={mensaje}
-        onClearError={() => setErrorNotif(null)}
-        onClearMensaje={() => setMensaje("")}
-        autoHide={true}
-        hideDelay={4000}
-      />
+      <NotificationManager autoHide={true} hideDelay={4000} />
 
       {/* Modal de confirmación de eliminación */}
       {confirmNotif && confirmNotif.tipo === "warning" && (
@@ -177,11 +190,12 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
       {/* Modal de aprobación */}
       {modalAprobar && (
         <div className="modal-overlay" onClick={() => !procesando && setModalAprobar(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}> 
+          <div className="modal-content modal-wide" onClick={e => e.stopPropagation()}> 
             <h3>✅ Aprobar Solicitud de Código</h3>
             
             <div className="solicitud-details">
               <p><strong>Usuario:</strong> {modalAprobar.nombre} {modalAprobar.apellido}</p>
+              <p><strong>DNI:</strong> {modalAprobar.dni || 'No provisto'}</p>
               <p><strong>Email:</strong> {modalAprobar.email}</p>
               <p><strong>Rol:</strong> {modalAprobar.rol}</p>
               <p><strong>Institución:</strong> {modalAprobar.institucionNombre || "No especificada"}</p>
@@ -247,6 +261,26 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
         </div>
       )}
 
+
+      {/* Success modal after generating code */}
+      {successResult && (
+        <div className="modal-overlay" onClick={() => setSuccessResult(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <h3>✅ Código generado</h3>
+            <p>Se generó el código y se envió por email a: <strong>{successResult.email}</strong></p>
+            <div style={{ margin: '1rem 0', padding: '1rem', background: '#f8f9fa', borderRadius: 8 }}>
+              <p><strong>Código:</strong> <span style={{ fontFamily: 'monospace', fontSize: '1.2rem' }}>{successResult.codigo}</span></p>
+              <p><strong>Nombre:</strong> {successResult.nombre} {successResult.apellido}</p>
+              <p><strong>DNI:</strong> {successResult.dni || 'No provisto'}</p>
+              <p><strong>Rol:</strong> {successResult.rol}</p>
+            </div>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <button className="btn-aprobar-confirmar" onClick={async () => { try { await navigator.clipboard.writeText(successResult.codigo); notify('Código copiado'); } catch { /* ignore clipboard errors */ } }}>Copiar código</button>
+              <button className="btn-cancelar" onClick={() => setSuccessResult(null)}>Cerrar</button>
+            </div>
+          </div>
+        </div>
+      )}
       {/* Tabla de solicitudes */}
       {loading ? (
         <p>Cargando solicitudes...</p>
@@ -259,12 +293,12 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
               <tr>
                 <th>Nombre</th>
                 <th>Apellido</th>
+                <th>DNI</th>
                 <th>Email</th>
                 <th>Rol</th>
-                <th>Institución</th>
                 <th>Fecha</th>
-                <th>Estado</th>
                 <th>Acciones</th>
+                <th>Estado</th>
               </tr>
             </thead>
             <tbody>
@@ -272,6 +306,16 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
                 <tr key={s._id} className={s.estado === 'aprobada' ? 'solicitud-aprobada' : ''}>
                   <td>{s.nombre}</td>
                   <td>{s.apellido}</td>
+                  <td className="dni-cell">
+                    <span className="dni-text">{s.dni || 'No provisto'}</span>
+                    <button
+                      className="btn-copiar btn-copiar-dni"
+                      title="Copiar DNI"
+                      onClick={() => navigator.clipboard.writeText(s.dni || '')}
+                    >
+                      📋
+                    </button>
+                  </td>
                   <td>
                     {s.email}
                     <button
@@ -283,14 +327,8 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
                     </button>
                   </td>
                   <td>{s.rol}</td>
-                  <td>{s.institucionNombre || s.institucion?.nombre || institucionNombre || "No especificada"}</td>
                   <td>{new Date(s.fecha).toLocaleString()}</td>
-                  <td>
-                    <span className={`estado-badge estado-${s.estado || 'pendiente'}`}> 
-                      {s.estado || 'pendiente'}
-                    </span>
-                  </td>
-                  <td>
+                  <td className="acciones-column">
                     <div className="acciones-group">
                       {s.estado !== 'aprobada' && (
                         <button
@@ -309,6 +347,11 @@ function SolicitudesCodigoAdmin({ institucionNombre, institucionId }) {
                         🗑️
                       </button>
                     </div>
+                  </td>
+                  <td>
+                    <span className={`estado-badge estado-${s.estado || 'pendiente'}`}> 
+                      {s.estado || 'pendiente'}
+                    </span>
                   </td>
                 </tr>
               ))}

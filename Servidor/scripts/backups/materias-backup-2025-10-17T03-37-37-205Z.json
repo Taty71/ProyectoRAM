@@ -1,0 +1,364 @@
+[
+  {
+    "id": "68adcbea9fa3ac7671751df3",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751df3",
+      "nombre": "Matemática I",
+      "codigo": "MAT1",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 1,
+      "profesor": "68adcbe99fa3ac7671751de0",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.069Z",
+      "updatedAt": "2025-08-26T14:59:54.069Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751df6",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751df6",
+      "nombre": "Lengua y Literatura I",
+      "codigo": "LEN1",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 1,
+      "profesor": "68adcbe99fa3ac7671751de3",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.076Z",
+      "updatedAt": "2025-08-26T14:59:54.076Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751df9",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751df9",
+      "nombre": "Física I",
+      "codigo": "FIS1",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 1,
+      "profesor": "68adcbe99fa3ac7671751de6",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.081Z",
+      "updatedAt": "2025-08-26T14:59:54.081Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751dfc",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751dfc",
+      "nombre": "Educación Tecnologíca I",
+      "codigo": "ETEC1",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 1,
+      "profesor": "68adcbe99fa3ac7671751dd4",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.090Z",
+      "updatedAt": "2025-10-17T01:22:53.671Z",
+      "__v": 0,
+      "ciclo": "CBU"
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751dff",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751dff",
+      "nombre": "Matemática II",
+      "codigo": "MAT2",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 2,
+      "profesor": "68adcbe99fa3ac7671751de0",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.095Z",
+      "updatedAt": "2025-08-26T14:59:54.095Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e02",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e02",
+      "nombre": "Lengua y Literatura II",
+      "codigo": "LEN2",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 2,
+      "profesor": "68adcbe99fa3ac7671751de3",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.100Z",
+      "updatedAt": "2025-08-26T14:59:54.100Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e05",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e05",
+      "nombre": "Física II",
+      "codigo": "FIS2",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 2,
+      "profesor": "68adcbe99fa3ac7671751de6",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.107Z",
+      "updatedAt": "2025-08-26T14:59:54.107Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e08",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e08",
+      "nombre": "Educación Tecnologica II",
+      "codigo": "ETEC2",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 2,
+      "profesor": "68adcbe99fa3ac7671751dd4",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.113Z",
+      "updatedAt": "2025-10-17T01:22:41.991Z",
+      "__v": 0,
+      "ciclo": "CBU"
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e0b",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e0b",
+      "nombre": "Matemática III",
+      "codigo": "MAT3",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 3,
+      "profesor": "68adcbe99fa3ac7671751de0",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.120Z",
+      "updatedAt": "2025-08-26T14:59:54.120Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e0e",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e0e",
+      "nombre": "Lengua y Literatura III",
+      "codigo": "LEN3",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 3,
+      "profesor": "68adcbe99fa3ac7671751de3",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.125Z",
+      "updatedAt": "2025-08-26T14:59:54.125Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e11",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e11",
+      "nombre": "Física III",
+      "codigo": "FIS3",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 3,
+      "profesor": "68adcbe99fa3ac7671751de6",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.130Z",
+      "updatedAt": "2025-08-26T14:59:54.130Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e14",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e14",
+      "nombre": "Introducción a la Electricidad",
+      "codigo": "IEL3",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 3,
+      "profesor": "68adcbe99fa3ac7671751de9",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.134Z",
+      "updatedAt": "2025-08-26T14:59:54.134Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e17",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e17",
+      "nombre": "Introducción a la Programación",
+      "codigo": "IPR3",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "CBU",
+      "año": 3,
+      "profesor": "68adcbe99fa3ac7671751dec",
+      "cicloAcademico": 2025,
+      "activa": false,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.140Z",
+      "updatedAt": "2025-10-17T01:39:00.635Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e1a",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e1a",
+      "nombre": "Circuitos Eléctricos I",
+      "codigo": "CEL4",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 4,
+      "profesor": "68adcbe99fa3ac7671751de9",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.145Z",
+      "updatedAt": "2025-08-26T14:59:54.145Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e1d",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e1d",
+      "nombre": "Electrónica Analógica I",
+      "codigo": "EAN4",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 4,
+      "profesor": "68adcbe99fa3ac7671751de9",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.150Z",
+      "updatedAt": "2025-08-26T14:59:54.150Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e20",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e20",
+      "nombre": "Instalaciones Eléctricas I",
+      "codigo": "IEL4",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 4,
+      "profesor": "68adcbe99fa3ac7671751dda",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.156Z",
+      "updatedAt": "2025-08-26T14:59:54.156Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e23",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e23",
+      "nombre": "Matemática Aplicada",
+      "codigo": "MAP4",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 4,
+      "profesor": "68adcbe99fa3ac7671751de0",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.161Z",
+      "updatedAt": "2025-08-26T14:59:54.161Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e26",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e26",
+      "nombre": "Circuitos Eléctricos II",
+      "codigo": "CEL5",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 5,
+      "profesor": "68adcbe99fa3ac7671751de9",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.166Z",
+      "updatedAt": "2025-08-26T14:59:54.166Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e29",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e29",
+      "nombre": "Electrónica Digital",
+      "codigo": "EDI5",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 5,
+      "profesor": "68adcbe99fa3ac7671751de9",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.172Z",
+      "updatedAt": "2025-08-26T14:59:54.172Z",
+      "__v": 0
+    }
+  },
+  {
+    "id": "68adcbea9fa3ac7671751e2c",
+    "original": {
+      "_id": "68adcbea9fa3ac7671751e2c",
+      "nombre": "Instalaciones Eléctricas II",
+      "codigo": "IEL5",
+      "institucion": "689378d663fcb14637380ee2",
+      "especialidad": "Electricidad",
+      "año": 5,
+      "profesor": "68adcbe99fa3ac7671751dda",
+      "cicloAcademico": 2025,
+      "activa": true,
+      "unidades": [],
+      "createdAt": "2025-08-26T14:59:54.178Z",
+      "updatedAt": "2025-08-26T14:59:54.178Z",
+      "__v": 0
+    }
+  }
+]

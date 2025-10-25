@@ -1,6 +1,7 @@
 .gestion-materias-root {
   font-family: inherit;
   color: var(--text-color, #0b3b2e);
+  box-sizing: border-box;
 }
 .gestion-header {
   display: flex;
@@ -10,6 +11,29 @@
 }
 .gestion-sub {
   color: var(--muted, #2f6f63);
+}
+.gestion-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  align-items: center;
+}
+.gestion-tabs .tab {
+  background: transparent;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted, #2f6f63);
+  cursor: pointer;
+}
+.gestion-tabs .tab.active {
+  background: linear-gradient(90deg, var(--accent, #6ac7b8), #4fb0a0);
+  color: white;
+  box-shadow: 0 6px 18px rgba(20, 60, 50, 0.06);
+  font-weight: 700;
+}
+.gestion-tabs .tab:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.06);
 }
 .gestion-form {
   background: linear-gradient(
@@ -24,20 +48,90 @@
 }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  ); /* slightly wider columns */
   gap: 8px;
 }
+
+/* Two-column forms: group controls into two columns where appropriate */
+.two-col .grid {
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+}
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field-group select,
+.field-group input {
+  width: 100%;
+}
+.field-group .help {
+  margin-top: 0;
+  font-size: 12px;
+  color: var(--muted, #4b7d73);
+}
+.grid input,
+.grid select,
+.gestion-form input,
+.gestion-form select {
+  padding: 0.85rem 1rem; /* 14px horizontal for easier clicking */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1.03rem;
+  background: white;
+  margin-top: 0.25rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Make inputs and selects have a consistent, compact height so numeric/select fields
+   (ej. año / división) don't appear oversized */
 .grid input,
 .grid select {
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  height: 48px; /* slightly taller for better touch targets */
+  min-height: 44px;
+  line-height: 1.2;
+}
+
+.grid input[type="number"] {
+  /* ensure number inputs don't show up as taller blocks */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.grid input:focus,
+.grid select:focus,
+.gestion-form input:focus,
+.gestion-form select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 2px rgba(41, 128, 185, 0.12);
 }
 .form-actions {
   display: flex;
   gap: 8px;
   justify-content: flex-start;
   margin-top: 10px;
+}
+
+.code-row {
+  display: flex;
+  gap: 8px;
+}
+.code-row input {
+  flex: 1 1 auto;
+}
+.code-row .btn-secondary {
+  flex: 0 0 auto;
+  padding: 0.6rem 0.8rem;
+}
+
+/* Evitar que componentes internos empujen el ancho más allá del modal */
+.gestion-form .grid > * {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .btn-primary {
   background: var(--accent, #6ac7b8);
@@ -66,6 +160,119 @@
   padding: 8px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
+
+/* Inline assign controls styling */
+.assign-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.assign-controls .assign-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px; /* ensure selects have comfortable room */
+  max-width: 320px;
+}
+/* Make inline assign inputs and selects visually consistent with the rest of the app */
+.assign-controls .assign-field input,
+.assign-controls .assign-field select {
+  padding: 0.85rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #d7dde0;
+  background: white;
+  font-size: 1rem;
+  height: 46px;
+  box-sizing: border-box;
+}
+.assign-controls .assign-field input::placeholder {
+  color: #9aa6a1;
+}
+.assign-controls .assign-field input:focus,
+.assign-controls .assign-field select:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.08);
+}
+.assign-controls.admin-assign .assign-field {
+  min-width: 140px;
+}
+.assign-label {
+  font-size: 12px;
+  color: var(--muted, #4b7d73);
+  font-weight: 600;
+}
+.days-field .days-wrap {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.day-label {
+  font-size: 13px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.day-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0 4px 0 0;
+
+  /* layout: force horario + days onto a second row inside modal */
+  .horario-field {
+    flex: 1 1 220px;
+  }
+  .days-field {
+    flex: 1 1 260px;
+  }
+
+  /* Layout tweaks limited to modal context so inline assign (small screens) not affected */
+  .modal-ventana .assign-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .modal-ventana .horario-field,
+  .modal-ventana .days-field {
+    flex: 1 1 48%;
+    min-width: 220px;
+  }
+
+  .modal-ventana .assign-actions {
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+.assign-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* make action buttons inside assign modal slightly smaller */
+.assign-actions .btn-primary,
+.assign-actions .btn-secondary {
+  padding: 6px 10px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+/* On very small screens, stack labels on top but keep spacing */
+@media (max-width: 640px) {
+  .assign-controls {
+    gap: 8px;
+  }
+  .assign-controls .assign-field {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
 .materia-titulo {
   font-weight: 700;
 }
@@ -92,4 +299,51 @@
   .grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Ensure numeric and select controls in the gestion form stay compact */
+.gestion-form .grid input[type="number"],
+.gestion-form .grid select[name="division"],
+.gestion-form .grid select[name="ciclo"],
+.gestion-form .grid select[name="especialidad"],
+.gestion-form .grid input[disabled] {
+  height: 44px;
+  max-height: 44px;
+  min-height: 40px;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* guard against accidental textarea-like expansion (if any control becomes multiline) */
+.gestion-form .grid textarea {
+  resize: none;
+  height: 44px;
+  max-height: 44px;
+}
+
+/* Slightly larger buttons for better visibility */
+.btn-primary {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.btn-secondary {
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Placeholder styling for selects: use an invalid disabled option in the markup
+   (e.g. <option value="" disabled selected>-- Seleccionar profesor --</option>)
+   and style the select when invalid so placeholder looks muted. */
+.grid select:invalid {
+  color: var(--muted, #6c757d);
+}
+.grid select option[disabled] {
+  color: var(--muted, #6c757d);
+}
+.grid select:not(:invalid) {
+  color: inherit;
 }

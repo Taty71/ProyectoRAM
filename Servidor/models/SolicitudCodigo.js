@@ -3,6 +3,7 @@ const SolicitudCodigoSchema = new mongoose.Schema({
   nombre: { type: String, required: true },
   apellido: { type: String, required: true },
   email: { type: String, required: true },
+  dni: { type: String },
   rol: { type: String, required: true },
   // motivo eliminado
   institucion: { type: mongoose.Schema.Types.ObjectId, ref: 'Institucion' },

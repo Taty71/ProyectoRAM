@@ -24,14 +24,12 @@ const EstudianteSchema = new mongoose.Schema({
   dni: {
     type: String,
     required: true,
-    unique: true,
     trim: true
   },
   
   email: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
     lowercase: true
   },
@@ -50,7 +48,7 @@ const EstudianteSchema = new mongoose.Schema({
   
   especialidad: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   
@@ -79,30 +77,9 @@ const EstudianteSchema = new mongoose.Schema({
     required: true
   },
   
-  contacto: {
-    telefono: String,
-    direccion: {
-      calle: String,
-      ciudad: String,
-      provincia: String,
-      codigoPostal: String
-    }
-  },
-  
-  tutor: {
-    nombre: String,
-    apellido: String,
-    telefono: String,
-    email: String,
-    relacion: {
-      type: String,
-      enum: ['padre', 'madre', 'tutor_legal', 'abuelo', 'abuela', 'otro']
-    }
-  },
-  
   estadoAcademico: {
     type: String,
-    enum: ['activo', 'inactivo', 'graduado', 'transferido', 'abandonado'],
+    enum: ['activo', 'inactivo'],
     default: 'activo'
   },
   
@@ -162,6 +139,8 @@ EstudianteSchema.virtual('enCicloActual').get(function() {
 // Índices
 EstudianteSchema.index({ institucion: 1, especialidad: 1, año: 1 });
 EstudianteSchema.index({ cicloAcademico: 1, estadoAcademico: 1 });
-EstudianteSchema.index({ idEstudiante: 1 });
+// Asegurar unicidad por idEstudiante y por dni a nivel de índice (dni es la clave única del sistema)
+EstudianteSchema.index({ idEstudiante: 1 }, { unique: true });
+EstudianteSchema.index({ dni: 1 }, { unique: true });
 
 module.exports = mongoose.model('Estudiante', EstudianteSchema);

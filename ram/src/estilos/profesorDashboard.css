@@ -1,0 +1,282 @@
+/* Profesor dashboard styles - elegant and modern */
+:root {
+  --pd-bg: linear-gradient(135deg, #a0e9d8, #7fd3c7 60%);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --muted: #5b6b6b;
+  --accent: #0b6b66;
+  --accent-2: #2ea6b3;
+}
+.dashboard-container {
+  padding: 36px 28px;
+  min-height: 100vh;
+  background: var(--pd-bg);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  color: #073433;
+}
+.logo-ram {
+  width: 84px;
+  height: auto;
+  display: block;
+  margin: 0 auto 8px;
+}
+h1 {
+  text-align: center;
+  font-size: 34px;
+  color: #0b4f4a;
+  margin-bottom: 6px;
+}
+.slogan {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+.dashboard-bienvenida {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.welcome-pill {
+  background: var(--card-bg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(11, 107, 102, 0.08);
+  color: var(--accent);
+  font-weight: 600;
+}
+/* Center the welcome pill and match panel max width */
+.dashboard-bienvenida {
+  display: flex;
+  justify-content: center;
+}
+.dashboard-bienvenida .welcome-pill {
+  /* Reduce max width so the welcome pill doesn't span the whole page on wide screens */
+  max-width: 760px;
+  /* On narrow screens take most of the width, on wide screens stay at max-width */
+  width: min(90%, 760px);
+  display: block;
+  text-align: center;
+}
+.logout-btn {
+  position: absolute;
+  right: 22px;
+  top: 18px;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.workflow-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto 26px;
+}
+.panel-buttons {
+  /* match the main content max width so buttons align with materias */
+  max-width: 1100px;
+  margin: 0 auto 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: center; /* center group */
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 6px 12px; /* small padding to keep breathing room */
+}
+.panel-buttons .btn-primary {
+  background: linear-gradient(180deg, #2ea6b3, #0b6b66);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  min-width: 210px; /* consistent width so buttons align */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(11, 107, 102, 0.06);
+}
+.panel-buttons .btn-primary:hover {
+  transform: translateY(-3px);
+  opacity: 0.95;
+}
+
+.profesor-info {
+  grid-column: 1 / -1;
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(11, 107, 102, 0.06);
+}
+.workflow-step {
+  display: block;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--accent-2);
+  box-shadow: 0 6px 18px rgba(11, 107, 102, 0.04);
+  margin: 8px 0;
+  text-align: left;
+}
+.workflow-step:hover {
+  transform: translateY(-3px);
+  transition: all 0.18s ease;
+  box-shadow: 0 14px 30px rgba(11, 107, 102, 0.08);
+}
+
+.materias-resumen {
+  grid-column: 1 / -1;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.materias-resumen h4 {
+  margin-bottom: 10px;
+}
+.materias-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+.materia-card {
+  background: var(--card-bg);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.materia-card strong {
+  color: var(--accent);
+}
+.btn-volver {
+  background: #f4f7f6;
+  color: var(--accent);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+/* New panel button styles used in the professor modal */
+.prof-panel-card .btn-primary {
+  background: linear-gradient(180deg, #2ea6b3, #0b6b66);
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.prof-panel-card .btn-primary:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+/* materia buttons */
+.materia-btn {
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 107, 102, 0.06);
+  background: #ffffff;
+}
+.materia-btn:hover {
+  box-shadow: 0 10px 24px rgba(11, 107, 102, 0.06);
+}
+.materia-btn.selected {
+  border: 2px solid var(--accent);
+  background: linear-gradient(180deg, #eafaf8, #ffffff);
+}
+
+/* Filters styling */
+.panel-filters label {
+  font-size: 14px;
+  color: #225e5a;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.panel-filters select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(11, 107, 102, 0.12);
+  background: #fff;
+}
+.profesor-gestion label {
+  font-weight: 600;
+  margin-right: 8px;
+}
+.profesor-gestion select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(11, 107, 102, 0.08);
+}
+
+.gestion-materias {
+  max-width: 1100px;
+  margin: 12px auto;
+  background: transparent;
+}
+.profesor-gestion ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.profesor-gestion li {
+  margin: 8px 0;
+}
+
+@media (max-width: 900px) {
+  .workflow-grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 26px;
+  }
+}
+
+/* Layout helpers for professor filters to make them well-distributed */
+.profesor-gestion .filters-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.profesor-gestion .filters-row .filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profesor-gestion select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(11, 107, 102, 0.12);
+  min-width: 90px;
+  background: #fff;
+}
+/* materia selector should be more prominent and centered */
+#select-materia {
+  min-width: 220px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(11, 107, 102, 0.12);
+}
+
+@media (max-width: 700px) {
+  .profesor-gestion .filters-row {
+    gap: 8px;
+  }
+  .profesor-gestion select {
+    min-width: 110px;
+  }
+  #select-materia {
+    min-width: 160px;
+  }
+}

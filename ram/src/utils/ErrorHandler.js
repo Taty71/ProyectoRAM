@@ -127,10 +127,9 @@ export class ErrorHandler {
 export function useErrorHandler() {
   const [error, setError] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(false);
+  const clearError = React.useCallback(() => setError(null), []);
 
-  const clearError = () => setError(null);
-
-  const handleAsync = async (asyncFunction, loadingState = true) => {
+  const handleAsync = React.useCallback(async (asyncFunction, loadingState = true) => {
     if (loadingState) setIsLoading(true);
     clearError();
 
@@ -143,25 +142,29 @@ export function useErrorHandler() {
     } finally {
       if (loadingState) setIsLoading(false);
     }
-  };
+  }, [clearError]);
 
-  const setValidationError = (message, field = null) => {
+  const setValidationError = React.useCallback((message, field = null) => {
     setError(ErrorHandler.processValidationError(message, field));
-  };
+  }, []);
 
   // Permite a los componentes establecer un error procesado manualmente
-  const setProcessedError = (err) => setError(err);
+  const setProcessedError = React.useCallback((err) => setError(err), []);
 
-  return {
+  const formatError = React.useCallback((errorObj) => ErrorHandler.formatErrorMessage(errorObj), []);
+  const getErrorClass = React.useCallback((errorObj) => ErrorHandler.getErrorClass(errorObj), []);
+
+  // Return a memoized object to keep identity stable between renders
+  return React.useMemo(() => ({
     error,
     isLoading,
     clearError,
     handleAsync,
     setValidationError,
     setError: setProcessedError,
-    formatError: (errorObj) => ErrorHandler.formatErrorMessage(errorObj),
-    getErrorClass: (errorObj) => ErrorHandler.getErrorClass(errorObj)
-  };
+    formatError,
+    getErrorClass
+  }), [error, isLoading, clearError, handleAsync, setValidationError, setProcessedError, formatError, getErrorClass]);
 }
 
 export default ErrorHandler;

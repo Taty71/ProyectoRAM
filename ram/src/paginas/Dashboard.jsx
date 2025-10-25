@@ -2,16 +2,21 @@ import React from "react";
 import SolicitudesCodigoAdmin from "../componentes/SolicitudesCodigoAdmin";
 import GestionCodigosInvitacion from "../componentes/GestionCodigosInvitacion";
 import InformesEstadisticos from "../componentes/InformesEstadisticos";
-import ListaUsuarios from "../componentes/ListaUsuarios";
+import VerUsuariosModal from "../componentes/VerUsuariosModal";
+import TrabajosPracticosMiAprendizaje from "../componentes/TrabajosPracticosMiAprendizaje";
 import ModalVentana from "../componentes/ModalVentana";
 import InstitucionBanner from "../componentes/Institucion_Banner";
 import ProfesorDashboard from "../componentes/ProfesorDashboard";
+import EstudianteDashboard from "../componentes/EstudianteDashboard";
 import GestionMateriasWrapper from "../componentes/GestionMaterias";
+import ListaProfesores from "../componentes/ListaProfesoresFixed";
+import ListaEstudiantes from "../componentes/ListaEstudiantes";
 // import JefeAreaDashboard from "../componentes/JefeAreaDashboard"; // crear si hace falta
 // import EstudianteDashboard from "../componentes/EstudianteDashboard"; // crear si hace falta
 import "../estilos/colores.css";
 import "../estilos/dashboard.css";
-import logo from "../assets/logo-ram.png";
+import "../estilos/estudianteDashboard.css";
+import logo from "../assets/logoRAM.png";
 
 function Dashboard({ setPantalla }) {
   // Nombre y rol del usuario (leer de localStorage)
@@ -21,7 +26,8 @@ function Dashboard({ setPantalla }) {
 
   const nombreMostrar = storedNombre || (storedNombreCompleto ? storedNombreCompleto.split(' ')[0] : "Administrador");
   const apellidoMostrar = storedApellido || (storedNombreCompleto ? storedNombreCompleto.split(' ').slice(1).join(' ') : "");
-  const rol = localStorage.getItem("rol") || "administrador";
+  const rawRol = localStorage.getItem("rol") || "administrador";
+  const rol = (typeof rawRol === 'string') ? rawRol.toLowerCase() : rawRol;
   const nombreCompleto = `${nombreMostrar} ${apellidoMostrar}`.trim();
 
   // Institución (leer de localStorage y mantener en estado)
@@ -53,8 +59,9 @@ function Dashboard({ setPantalla }) {
             setInstitucionNombre(nombre2);
             try { localStorage.setItem("institucionNombre", nombre2); } catch { /* ignore */ }
           }
-        } catch {
-          // ignore
+        } catch (err) {
+          // ignore errors when attempting fallback institution lookup
+          void err;
         }
       }
     })();
@@ -64,8 +71,8 @@ function Dashboard({ setPantalla }) {
 
   const [modal, setModal] = React.useState("");
   // Decide que componente mostrar según rol
-  if (rol === "profesor") {
-    // ProfesorDashboard debería implementar su propia UI mínima
+  if (rol === "profesor" || rol === 'teacher') {
+    // ProfesorDashboard proporciona la vista restringida para profesores
     return <ProfesorDashboard setPantalla={setPantalla} />;
   }
 
@@ -81,48 +88,48 @@ function Dashboard({ setPantalla }) {
   }
 
   if (rol === "estudiante") {
-    // crear y usar EstudianteDashboard cuando esté listo
-    return (
-      <div>
-        <h2>Bienvenido/a, {nombreCompleto} (Estudiante)</h2>
-        <p>Panel del estudiante en desarrollo.</p>
-      </div>
-    );
+    return <EstudianteDashboard setPantalla={setPantalla} />;
   }
 
   // POR DEFECTO: admin (o cualquier rol no reconocido)
   // Aquí colocamos la UI admin completa con botones y modales
 
   return (
-    <div className="dashboard-container">
-  <InstitucionBanner nombreInstitucion={institucionNombre} institucionId={institucionId} />
-      <button className="logout-btn" onClick={() => { localStorage.clear(); setPantalla && setPantalla("login"); }}>
-        &#x2716; Cerrar sesión
-      </button>
-      <img src={logo} alt="Logo RAM" className="logo-ram" />
-      <h1>Panel de Administración RAM</h1>
+    <div className="dashboard-wrap">
+      <div className="header-row">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <img src={logo} alt="Logo RAM" className="logo-ram" />
+          <h1 className="header-title">Panel de Administración RAM</h1>
+        </div>
+        <div className="header-actions">
+          <button className="logout-btn" onClick={() => { localStorage.clear(); setPantalla && setPantalla("login"); }}>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+
       <p className="slogan">Gestión de solicitudes y códigos de invitación</p>
 
-      <div className="dashboard-bienvenida">
-        <span>Bienvenido/a, <strong>{nombreCompleto}</strong> ({rol})</span>
+      <div style={{ textAlign: 'center', marginBottom: 12 }}>
+        <span className="welcome-pill">Bienvenido/a, <strong>{nombreCompleto}</strong> ({rol})</span>
       </div>
 
-      <div className="dashboard-admin-btns">
-        <button className="dashboard-admin-btn" onClick={() => setModal("usuarios")}>👥 Ver usuarios registrados</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("solicitudes")}>📨 Ver solicitudes de códigos</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("codigos")}>🔑 Gestionar códigos de invitación</button>
-  <button className="dashboard-admin-btn" onClick={() => setModal("materias")}>📚 Gestionar materias</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("informes")}>📈 Informes y estadísticas</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("profesores")}>👨‍🏫 Gestionar profesores</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("trabajos")}>📄 Trabajos Prácticos Evaluativos</button>
-        <button className="dashboard-admin-btn" onClick={() => setModal("estudiantes")}>🎓 Gestionar estudiantes</button>
+      <InstitucionBanner nombreInstitucion={institucionNombre} institucionId={institucionId} />
+
+      <div className="panel-buttons">
+        <button className="btn-primary" onClick={() => setModal("usuarios")}>👥 Ver usuarios registrados</button>
+        <button className="btn-primary" onClick={() => setModal("solicitudes")}>📨 Ver solicitudes de códigos</button>
+        <button className="btn-primary" onClick={() => setModal("codigos")}>🔑 Gestionar códigos de invitación</button>
+        <button className="btn-primary" onClick={() => setModal("materias")}>📚 Gestionar materias</button>
+        <button className="btn-primary" onClick={() => setModal("informes")}>📈 Informes y estadísticas</button>
+        <button className="btn-primary" onClick={() => setModal("profesores")}>👨‍🏫 Gestionar profesores</button>
+        <button className="btn-primary" onClick={() => setModal("trabajos")}>📄 Trabajos Prácticos Evaluativos</button>
+        <button className="btn-primary" onClick={() => setModal("estudiantes")}>🎓 Gestionar estudiantes</button>
       </div>
 
-      <ModalVentana open={modal === "usuarios"} onClose={() => setModal("")} titulo="Usuarios registrados">
-        <ListaUsuarios />
-      </ModalVentana>
+      <VerUsuariosModal open={modal === "usuarios"} onClose={() => setModal("")} />
 
-      <ModalVentana open={modal === "solicitudes"} onClose={() => setModal("")} titulo="Solicitudes de código de invitación">
+      <ModalVentana open={modal === "solicitudes"} onClose={() => setModal("")} titulo="Solicitudes de código de invitación" wide ultra>
         <SolicitudesCodigoAdmin institucionId={institucionId} institucionNombre={""} />
       </ModalVentana>
 
@@ -140,16 +147,20 @@ function Dashboard({ setPantalla }) {
         <InformesEstadisticos rol="administrador" />
       </ModalVentana>
 
-      <ModalVentana open={modal === "profesores"} onClose={() => setModal("")} titulo="Gestión de profesores">
-        <p>Gestión de profesores (en desarrollo)</p>
+      <ModalVentana open={modal === "profesores"} onClose={() => setModal("")} titulo="Gestión de profesores" wide>
+        <div style={{ padding: 8 }}>
+          <ListaProfesores institucionId={institucionId} institucionNombre={institucionNombre} />
+        </div>
       </ModalVentana>
 
       <ModalVentana open={modal === "trabajos"} onClose={() => setModal("")} titulo="Trabajos Prácticos Evaluativos">
-        <p>Trabajos prácticos evaluativos (en desarrollo)</p>
+        <TrabajosPracticosMiAprendizaje />
       </ModalVentana>
 
-      <ModalVentana open={modal === "estudiantes"} onClose={() => setModal("")} titulo="Gestión de estudiantes">
-        <p>Gestión de estudiantes (en desarrollo)</p>
+      <ModalVentana open={modal === "estudiantes"} onClose={() => setModal("")} titulo="Gestión de estudiantes" wide>
+        <div style={{ padding: 8 }}>
+          <ListaEstudiantes institucionId={institucionId} />
+        </div>
       </ModalVentana>
     </div>
   );

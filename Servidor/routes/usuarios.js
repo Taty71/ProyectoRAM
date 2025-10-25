@@ -8,27 +8,59 @@ const { verificarTokenUsuario, verificarRol } = require('../middleware/authMiddl
 // Obtener usuarios de la institución
 router.get('/', verificarTokenUsuario, verificarRol('administrador', 'jefe_area'), async (req, res) => {
   try {
-    const { rol, activo = true } = req.query;
-    
-    let filtro = { institucion: req.usuario.institucion._id };
+    const { rol } = req.query;
+
+    // Parse 'activo' query param robustly. Default to true (show active users)
+    // If the client provides ?activo=false it will show inactive users only.
+    const activoQuery = (req.query.activo === undefined) ? true : (String(req.query.activo) === 'true');
+
+    // Prefer institution from authenticated user, but allow explicit institucionId (for admin debugging or cross-inst checks)
+    const institucionIdFromToken = req.usuario && req.usuario.institucion ? (req.usuario.institucion._id || req.usuario.institucion) : null;
+    const institucionId = req.query.institucionId || institucionIdFromToken;
+
+    if (!institucionId) {
+      return res.status(400).json({ error: 'Institución no determinada. Asegúrese de enviar un token válido o pasar institucionId en la query.' });
+    }
+
+    const filtro = { institucion: institucionId, activo: activoQuery };
     if (rol) filtro.rol = rol;
-    if (activo !== undefined) filtro.activo = activo === 'true';
 
-    const usuarios = await Usuario.find(filtro)
-      .select('-password')
-      .populate('materias')
-      .sort({ apellido: 1, nombre: 1 });
+    // Build query and only populate 'materias' if the schema actually defines it
+    const usuariosQuery = Usuario.find(filtro).select('-password');
+    if (Usuario.schema && Usuario.schema.path('materias')) {
+      usuariosQuery.populate('materias');
+    }
+    const usuarios = await usuariosQuery.sort({ apellido: 1, nombre: 1 }).exec();
 
-    res.json({
-      usuarios,
-      total: usuarios.length
-    });
+    res.json({ usuarios, total: usuarios.length });
 
   } catch (error) {
-    console.error('Error al obtener usuarios:', error);
-    res.status(500).json({
-      error: 'Error al obtener usuarios'
-    });
+    console.error('Error al obtener usuarios:', error && error.stack ? error.stack : error);
+    const payload = { error: 'Error al obtener usuarios' };
+    if (process.env.NODE_ENV === 'development') {
+      payload.detalles = error && (error.message || String(error));
+      payload.stack = error && error.stack;
+    }
+    res.status(500).json(payload);
+  }
+});
+
+// Obtener un usuario por id (detalles completos)
+router.get('/:userId', verificarTokenUsuario, verificarRol('administrador', 'jefe_area'), async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const usuarioQuery = Usuario.findOne({ _id: userId, institucion: req.usuario.institucion._id }).select('-password');
+    if (Usuario.schema && Usuario.schema.path('materias')) {
+      usuarioQuery.populate('materias');
+    }
+    const usuario = await usuarioQuery.exec();
+
+    if (!usuario) return res.status(404).json({ error: 'Usuario no encontrado' });
+
+    res.json({ usuario });
+  } catch (error) {
+    console.error('Error al obtener usuario:', error);
+    res.status(500).json({ error: 'Error al obtener usuario' });
   }
 });
 
@@ -102,9 +134,20 @@ router.put('/:userId', verificarTokenUsuario, verificarRol('administrador'), [
 
   } catch (error) {
     console.error('Error al actualizar usuario:', error);
-    res.status(500).json({
-      error: 'Error al actualizar usuario'
-    });
+    // Handle duplicate key (e.g. DNI or email unique index)
+    if (error && (error.code === 11000 || (error.name === 'MongoServerError' && error.code === 11000))) {
+      // find which field caused duplicate
+      const dupFieldMatch = error.message && error.message.match(/index: (?:\w+\.)?(\w+)_1/);
+      const field = dupFieldMatch ? dupFieldMatch[1] : 'campo';
+      return res.status(409).json({ error: `Valor duplicado para ${field}. Ese valor ya está en uso.` });
+    }
+
+    // Validation errors
+    if (error && error.name === 'ValidationError') {
+      return res.status(400).json({ error: 'Error de validación', detalles: error.errors });
+    }
+
+    res.status(500).json({ error: 'Error al actualizar usuario' });
   }
 });
 

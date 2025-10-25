@@ -16,7 +16,7 @@ const InstitucionSchema = new mongoose.Schema({
   },
   modalidad: {
     type: String,
-    enum: ['tecnica', 'orientada'],
+    enum: ['Técnica', 'Orientada'],
     required: true
   },
   ciclos: [{

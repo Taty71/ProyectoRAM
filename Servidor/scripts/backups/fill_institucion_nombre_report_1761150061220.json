@@ -1,0 +1,19 @@
+{
+  "timestamp": "2025-10-22T16:21:01.220Z",
+  "results": [
+    {
+      "userId": "68cf1269e0e9bf8375550ab0",
+      "institucion": "68cf0da899777a5ee78c3e45",
+      "updated": true,
+      "reason": null,
+      "institucionNombre": "IPET 379 \"ALFREDO BENOIT MOLET\""
+    },
+    {
+      "userId": "68f3e7f4f4fec3f093cd8542",
+      "institucion": "68cf0da899777a5ee78c3e45",
+      "updated": true,
+      "reason": null,
+      "institucionNombre": "IPET 379 \"ALFREDO BENOIT MOLET\""
+    }
+  ]
+}

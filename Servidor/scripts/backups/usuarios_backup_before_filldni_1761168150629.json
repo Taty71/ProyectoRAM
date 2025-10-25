@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "68f3e7f4f4fec3f093cd8542",
+    "email": "crisbmaiaprofe@gmail.com",
+    "password": "$2a$10$7OkdMafDs0AZPHFTs35N4.9btDxoIyPObVd6NqHjc7.RKRK4WIWp2",
+    "rol": "profesor",
+    "nombre": "Mariela",
+    "apellido": "Espino",
+    "institucion": "68cf0da899777a5ee78c3e45",
+    "especialidades": [],
+    "materias": [],
+    "permisos": {
+      "verReportes": false,
+      "gestionarUsuarios": false,
+      "exportarDatos": false
+    },
+    "activo": true,
+    "cursosACargo": [],
+    "fechaIngreso": "2025-10-18T19:18:12.763Z",
+    "ultimoAcceso": "2025-10-19T13:48:57.270Z",
+    "createdAt": "2025-10-18T19:18:12.764Z",
+    "updatedAt": "2025-10-22T16:21:01.218Z",
+    "__v": 0,
+    "institucionNombre": "IPET 379 \"ALFREDO BENOIT MOLET\""
+  }
+]

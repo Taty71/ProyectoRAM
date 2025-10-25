@@ -176,7 +176,7 @@ exports.generarYEnviarCodigo = async (req, res) => {
 
     // ... resto del código (email, etc.)
 
-    // Enviar email al usuario con el código
+  // Enviar email al usuario con el código (incluyendo DNI si está disponible)
     const emailHTML = `
       <!DOCTYPE html>
       <html>
@@ -209,6 +209,7 @@ exports.generarYEnviarCodigo = async (req, res) => {
             <div class="info">
               <p><strong>📋 Detalles del código:</strong></p>
               <ul>
+                <li><strong>DNI solicitante:</strong> ${solicitud.dni || 'No provisto'}</li>
                 <li><strong>Rol asignado:</strong> ${solicitud.rol}</li>
                 <li><strong>Usos disponibles:</strong> ${usos || 1}</li>
                 <li><strong>Válido hasta:</strong> ${fechaExpiracion.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</li>

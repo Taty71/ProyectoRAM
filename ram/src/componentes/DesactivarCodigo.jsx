@@ -1,12 +1,13 @@
 import React from "react";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
 import NotificationManager from "../utils/NotificationManager";
+import { useNotification } from '../hooks/useNotification';
 import "../estilos/desactivarCodigo.css";
 
 function DesactivarCodigo() {
   const [codigo, setCodigo] = React.useState("");
   const { error, clearError, setValidationError } = useErrorHandler();
-  const [mensaje, setMensaje] = React.useState("");
+  const { notify } = useNotification();
   const [cargando, setCargando] = React.useState(false);
 
   const handleChange = e => setCodigo(e.target.value);
@@ -14,7 +15,6 @@ function DesactivarCodigo() {
   const handleSubmit = async e => {
     e.preventDefault();
     clearError();
-    setMensaje("");
     if (!codigo.trim()) {
       setValidationError("Debes ingresar el código a desactivar");
       return;
@@ -32,7 +32,7 @@ function DesactivarCodigo() {
         },
         "Error desactivando código"
       );
-      setMensaje("Código desactivado exitosamente");
+  notify("Código desactivado exitosamente");
       setCodigo("");
     } catch (errorObj) {
       setValidationError(errorObj.message || "Error al desactivar el código");
@@ -55,9 +55,7 @@ function DesactivarCodigo() {
       </form>
       <NotificationManager
         error={error}
-        mensaje={mensaje}
         onClearError={clearError}
-        onClearMensaje={() => setMensaje("")}
       />
     </div>
   );

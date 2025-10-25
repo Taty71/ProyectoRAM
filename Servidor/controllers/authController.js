@@ -21,41 +21,26 @@ const transporter = nodemailer.createTransport({
 });
 
 exports.solicitarCodigo = async (req, res) => {
-  const { email, nombre, apellido, rol, institucion, institucionNombre } = req.body;
+  const { email, nombre, apellido, rol, institucion, institucionNombre, dni } = req.body;
   
   if (!email || !nombre || !apellido || !rol) {
     return res.status(400).json({ error: 'Nombre, apellido, email y rol son requeridos.' });
   }
   
   try {
-    let nombreInstitucion = institucionNombre || 'No especificada';
-    let institucionId = institucion; // Guardar el ID recibido
-    
-    // Si no viene institucionId pero sí nombre, intentar buscarla
-    if (!institucionId && institucionNombre) {
-      const Institucion = require('../models/Institucion');
-      const inst = await Institucion.findOne({ nombre: institucionNombre });
-      if (inst) {
-        institucionId = inst._id;
-        nombreInstitucion = inst.nombre;
-      }
-    }
-    
-    // Si viene institucionId pero no nombre, buscar el nombre
-    if (institucionId && !institucionNombre) {
-      const Institucion = require('../models/Institucion');
-      const inst = await Institucion.findById(institucionId);
-      if (inst && inst.nombre) {
-        nombreInstitucion = inst.nombre;
-      }
-    }
-    
+    // Preferir la institución activa del sistema (configurada en setup)
+    const Institucion = require('../models/Institucion');
+    const institucionActiva = await Institucion.findOne({ activa: true });
+    const institucionId = institucionActiva ? institucionActiva._id : null;
+    const nombreInstitucion = institucionActiva ? institucionActiva.nombre : (institucionNombre || 'No especificada');
+
     const solicitud = new SolicitudCodigo({
       nombre,
       apellido,
       email,
+      dni: dni || null,
       rol,
-      institucion: institucionId, // ✅ AGREGAR EL ID AQUÍ
+      institucion: institucionId,
       institucionNombre: nombreInstitucion
     });
     
@@ -66,7 +51,7 @@ exports.solicitarCodigo = async (req, res) => {
       from: `"RAM Sistema" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_ADMIN,
       subject: 'Nueva solicitud de código de invitación',
-      text: `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nRol: ${rol}\nInstitución: ${nombreInstitucion}`
+      text: `Nombre: ${nombre}\nApellido: ${apellido}\nEmail: ${email}\nDNI: ${dni || 'No provisto'}\nRol: ${rol}\nInstitución: ${nombreInstitucion}`
     });
 
     return res.json({ mensaje: 'Solicitud registrada y notificada al administrador.' });
@@ -82,6 +67,7 @@ exports.listarSolicitudesCodigo = async (req, res) => {
       _id: s._id,
       nombre: s.nombre,
       apellido: s.apellido,
+      dni: s.dni || '',
       email: s.email,
       rol: s.rol,
       institucion: s.institucion,

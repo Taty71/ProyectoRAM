@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-10-22T21:31:03.579Z",
+  "dryRun": true,
+  "apply": false,
+  "userQuery": {
+    "_id": "68f3e7f4f4fec3f093cd8542"
+  },
+  "dni": "40512345",
+  "changes": [
+    {
+      "model": "Usuario",
+      "id": "68f3e7f4f4fec3f093cd8542",
+      "field": "dni",
+      "from": null,
+      "to": "40512345"
+    }
+  ]
+}

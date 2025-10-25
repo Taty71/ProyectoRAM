@@ -1,12 +1,13 @@
 import React from "react";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
-import NotificationManager from "../utils/NotificationManager";
+ import NotificationManager from "../utils/NotificationManager";
+ import { useNotification } from '../hooks/useNotification';
 import "../estilos/listaCodigos.css";
 
 function ListaCodigos() {
   const [codigos, setCodigos] = React.useState([]);
   const { error, clearError, setError } = useErrorHandler();
-  const [mensaje, setMensaje] = React.useState("");
+  const { notifyError } = useNotification();
   const [cargando, setCargando] = React.useState(false);
 
   React.useEffect(() => {
@@ -26,17 +27,21 @@ function ListaCodigos() {
           },
           "Error cargando códigos"
         );
-        setCodigos(data.codigos || []);
-      } catch (errorObj) {
-        // Usar setError del hook para mostrar notificación correctamente
-        setError(errorObj);
-        setMensaje(ErrorHandler.formatErrorMessage(errorObj) || "Error cargando códigos");
+         setCodigos(data.codigos || []);
+         } catch (errorObj) {
+         // Usar setError del hook para mostrar notificación correctamente
+         setError(errorObj);
+         notifyError(ErrorHandler.formatErrorMessage(errorObj) || "Error cargando códigos");
       } finally {
         setCargando(false);
       }
     };
     fetchCodigos();
-  }, [clearError, setError]);
+  // Los hooks usados en este efecto (clearError, setError, notifyError) están memoizados
+  // en sus respectivos providers/hooks (useErrorHandler, useNotification), por lo que
+  // es intencional que el efecto se ejecute solo en el montaje.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="lista-codigos-container">
@@ -75,9 +80,7 @@ function ListaCodigos() {
       </div>
       <NotificationManager
         error={error}
-        mensaje={mensaje}
         onClearError={clearError}
-        onClearMensaje={() => setMensaje("")}
       />
     </div>
   );

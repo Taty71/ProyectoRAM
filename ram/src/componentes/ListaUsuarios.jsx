@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import API_BASE_URL from '../config/api';
 import "../estilos/colores.css";
 import "../estilos/listaUsuarios.css";
 
@@ -8,7 +9,7 @@ function ListaUsuarios({ setPantalla }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch("http://localhost:3000/api/usuarios?rol=profesor,jefe_area", {
+    fetch(`${API_BASE_URL}/api/usuarios?rol=profesor,jefe_area`, {
       headers: {
         "Authorization": `Bearer ${token}`
       }

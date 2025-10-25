@@ -19,9 +19,11 @@ function SelectInstitucion({ value, onChange, actualizar, onListaCargada }) {
           setError(data.error || "Error al obtener instituciones");
           if (onListaCargada) onListaCargada([]);
         }
-      } catch {
+      } catch (err) {
+        // network or other error
         setError("Error de conexión");
         if (onListaCargada) onListaCargada([]);
+        void err;
       }
       setLoading(false);
     }

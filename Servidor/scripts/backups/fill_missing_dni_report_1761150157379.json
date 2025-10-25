@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-22T16:22:37.379Z",
+  "dryRun": true,
+  "results": [
+    {
+      "userId": "68f3e7f4f4fec3f093cd8542",
+      "email": "crisbmaiaprofe@gmail.com",
+      "nombre": "Mariela",
+      "apellido": "Espino",
+      "matched": false,
+      "matchedBy": "none",
+      "newDni": "MISSING-68f3e7f4f4fec3f093cd8542"
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+/* Styles for Trabajos Practicos modal/component */
+.tp-container {
+  padding: 28px;
+  /* aumentar ancho para modal */
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.tp-header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.tp-title {
+  font-size: 20px;
+  margin-bottom: 6px;
+  color: #103a3a;
+  font-weight: 700;
+}
+.tp-sub {
+  color: #285e5e;
+  margin-bottom: 12px;
+}
+
+.tp-form {
+  display: grid;
+  gap: 12px;
+}
+.tp-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Field wrapper to allow label + control layout */
+.tp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.tp-label {
+  font-size: 13px;
+  color: #2b5151;
+  font-weight: 600;
+}
+
+.tp-input,
+.tp-textarea,
+.tp-select,
+.tp-input-small {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(34, 34, 34, 0.08);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.tp-select {
+  background: #fff;
+  appearance: none;
+}
+
+/* make small inputs match height/visual style but keep controlled width */
+.tp-input-small {
+  width: 130px;
+  min-width: 90px;
+}
+.tp-textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.tp-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+.btn-primary-tp {
+  background: linear-gradient(180deg, #2ea6b3, #1f8b91);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(45, 156, 219, 0.12);
+}
+.btn-secondary-tp {
+  background: #f0f6f5;
+  color: #224;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tp-divider {
+  border-top: 1px solid rgba(34, 34, 34, 0.06);
+  margin: 18px 0;
+}
+.tp-recent {
+  color: #234;
+}
+.tp-card {
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+.tp-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, #fbfdfe);
+  border: 1px solid rgba(34, 34, 34, 0.04);
+}
+
+@media (max-width: 700px) {
+  .tp-row {
+    flex-direction: column;
+  }
+  .tp-input-small {
+    width: 100%;
+  }
+}
+
+/* Slight spacing adjustments for modal internals when embedded in a dialog */
+.tp-container .tp-header {
+  padding-top: 4px;
+}

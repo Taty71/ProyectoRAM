@@ -1,0 +1,69 @@
+.editar-materia-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  /* When rendered inside ModalVentana, fit to the parent modal width */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+}
+.editar-materia-modal h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.editar-materia-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px; /* tighter spacing to reduce vertical height */
+}
+
+.editar-materia-form .form-field {
+  display: flex;
+  flex-direction: column;
+}
+.editar-materia-form .form-field.full {
+  grid-column: 1 / -1;
+}
+.editar-materia-form input,
+.editar-materia-form select {
+  padding: 6px 8px; /* smaller controls */
+  border-radius: 6px;
+  border: 1px solid #cfdde6;
+  font-size: 0.95rem;
+}
+.editar-materia-form label {
+  font-weight: 500;
+  margin-bottom: 2px;
+  font-size: 0.9rem;
+}
+.editar-materia-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+@media (max-width: 600px) {
+  .editar-materia-modal {
+    padding: 10px 8px;
+    max-width: 98vw;
+  }
+  .editar-materia-form {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Reduce vertical spacing for groups like "Horas totales" and "Horario" to avoid extra height */
+.editar-materia-form .form-field.full {
+  margin-bottom: 4px;
+}
+
+/* Make selects and inputs slightly more compact when inside dense layout */
+.editar-materia-form .form-field input[type="text"],
+.editar-materia-form .form-field input[type="number"],
+.editar-materia-form .form-field select {
+  line-height: 1.2;
+}

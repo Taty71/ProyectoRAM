@@ -1,6 +1,7 @@
 import React from "react";
 import { administradorSchema } from "../utils/validatorYup";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
+import { useNotification } from '../hooks/useNotification';
 import InputText from "./InputText";
 import "../estilos/SetupAdmin.css";
 
@@ -17,7 +18,7 @@ function SetupAdmin({
 }) {
   const { error, clearError, setValidationError } = useErrorHandler();
   // ...existing code...
-  const [mensajeLocal, setMensajeLocal] = React.useState("");
+  const { notify } = useNotification();
 
   const handleAdminChange = (e) => {
     setAdministrador(prev => ({
@@ -48,7 +49,7 @@ function SetupAdmin({
         },
         "Error al crear el administrador"
       );
-  setMensajeLocal("Sistema configurado exitosamente. Redirigiendo al login...");
+  notify("Sistema configurado exitosamente. Redirigiendo al login...");
       setTimeout(() => {
         onSetupComplete && onSetupComplete();
       }, 2000);
@@ -148,12 +149,7 @@ function SetupAdmin({
       {error && (
         <div className="setup-error-message">{error.message || error}</div>
       )}
-      {mensajeLocal && (
-        <div className="setup-success-message">
-          <span style={{fontSize: '1.3em', marginRight: '0.5em', verticalAlign: 'middle'}}>✅</span>
-          {mensajeLocal}
-        </div>
-      )}
+      {/* success messages are shown via NotificationContext */}
     </form>
   );
 }

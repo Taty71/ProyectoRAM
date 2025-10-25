@@ -165,7 +165,10 @@ const verificarRol = (...rolesPermitidos) => {
 			});
 		}
 
-		if (!rolesPermitidos.includes(req.usuario.rol)) {
+		// Normalize roles to be case-insensitive and accept common synonyms
+		const rolActual = String(req.usuario.rol || '').toLowerCase();
+		const permitidosNorm = (rolesPermitidos || []).map(r => String(r).toLowerCase());
+		if (!permitidosNorm.includes(rolActual)) {
 			return res.status(403).json({
 				error: 'Acceso denegado: permisos insuficientes',
 				rolRequerido: rolesPermitidos,

@@ -1,7 +1,7 @@
 /* Responsive dashboard layout */
 @media (max-width: 900px) {
   .dashboard-container {
-    padding: 1rem;
+    padding: 0.2rem;
     font-size: 1rem;
   }
   .dashboard-bienvenida {
@@ -161,13 +161,17 @@ h1 {
 
 .dashboard-bienvenida {
   margin: 0 auto 1.5rem auto;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 1rem;
   background: #fff;
   border-radius: 24px;
   box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--azul-ram);
-  display: inline-block;
+  display: block;
+  /* narrower center-aligned pill */
+  max-width: 640px;
+  width: min(92%, 640px);
+  text-align: center;
 }
 
 .dashboard-bienvenida strong {

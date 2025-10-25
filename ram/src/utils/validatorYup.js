@@ -1,6 +1,6 @@
 // Esquema para login
 export const loginSchema = Yup.object().shape({
-  email: Yup.string().email('Email inválido').required('El email es obligatorio'),
+  dni: Yup.string().matches(/^\d{7,8}$/, 'DNI inválido (debe tener 7 u 8 dígitos)').required('El DNI es obligatorio'),
   password: Yup.string().required('La contraseña es obligatoria'),
 });
 

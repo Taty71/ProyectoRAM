@@ -2,6 +2,7 @@ import React from "react";
 import * as Yup from "yup";
 import ErrorHandler, { useErrorHandler } from "../utils/ErrorHandler";
 import NotificationManager from "../utils/NotificationManager";
+import { useNotification } from '../hooks/useNotification';
 import "../estilos/crearCodigo.css";
 
 const codigoSchema = Yup.object().shape({
@@ -22,7 +23,7 @@ function CrearCodigo({ institucionId, institucionNombre, onCodigoCreado }) {
     fechaExpiracion: ""
   });
   const { error, clearError, setValidationError } = useErrorHandler();
-  const [mensaje, setMensaje] = React.useState("");
+  const { notify } = useNotification();
   const [cargando, setCargando] = React.useState(false);
 
   const handleChange = e => {
@@ -31,8 +32,7 @@ function CrearCodigo({ institucionId, institucionNombre, onCodigoCreado }) {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    clearError();
-    setMensaje("");
+  clearError();
     setCargando(true);
     try {
       await codigoSchema.validate(form);
@@ -63,7 +63,7 @@ function CrearCodigo({ institucionId, institucionNombre, onCodigoCreado }) {
         },
         "Error creando código"
       );
-      setMensaje(`Código creado: ${data.codigo}`);
+  notify(`Código creado: ${data.codigo}`);
       setForm({ nombre: "", apellido: "", rol: "profesor", usos: 1, fechaExpiracion: "" });
       if (onCodigoCreado) onCodigoCreado();
     } catch (errorObj) {
@@ -108,9 +108,7 @@ function CrearCodigo({ institucionId, institucionNombre, onCodigoCreado }) {
       </form>
       <NotificationManager
         error={error}
-        mensaje={mensaje}
         onClearError={clearError}
-        onClearMensaje={() => setMensaje("")}
       />
     </div>
   );

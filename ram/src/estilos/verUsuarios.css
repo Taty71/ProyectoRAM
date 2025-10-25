@@ -1,0 +1,66 @@
+.verusuarios-root {
+  padding: 12px;
+  max-width: 960px;
+  color: var(--text-color, #0b3b2e);
+}
+.verusuarios-header h3 {
+  margin: 0 0 6px 0;
+}
+.verusuarios-sub {
+  color: var(--muted, #577a72);
+  margin: 0 0 8px 0;
+}
+.verusuarios-actions {
+  margin: 8px 0 12px 0;
+}
+.verusuarios-table-wrap {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(20, 60, 50, 0.03);
+}
+.verusuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.verusuarios-table th,
+.verusuarios-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  text-align: left;
+}
+.verusuarios-table th {
+  color: var(--muted, #55786f);
+  font-weight: 700;
+}
+.row-inactive td {
+  opacity: 0.6;
+}
+.actions-td .btn-link,
+.actions-td .btn-link.danger {
+  margin-right: 8px;
+}
+.verusuarios-edit-form .grid-edit {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.verusuarios-edit-form input,
+.verusuarios-edit-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.verusuarios-loading {
+  padding: 12px;
+  text-align: center;
+}
+.field-error {
+  color: #b00020;
+  font-size: 12px;
+  margin-top: 6px;
+}

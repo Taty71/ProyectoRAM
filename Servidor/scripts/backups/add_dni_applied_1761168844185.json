@@ -1,0 +1,15 @@
+{
+  "timestamp": "2025-10-22T21:34:04.185Z",
+  "updateResults": [
+    {
+      "model": "Usuario",
+      "result": {
+        "acknowledged": true,
+        "modifiedCount": 1,
+        "upsertedId": null,
+        "upsertedCount": 0,
+        "matchedCount": 1
+      }
+    }
+  ]
+}

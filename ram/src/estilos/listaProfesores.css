@@ -1,0 +1,168 @@
+.lista-profesores-container,
+.lista-estudiantes-container {
+  max-width: 1100px;
+  margin: 8px auto;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.96),
+    rgba(255, 255, 255, 0.98)
+  );
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(11, 107, 102, 0.06);
+  color: #053f3b;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+}
+.lista-profesores-container h2,
+.lista-estudiantes-container h2 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  color: #0b6b66;
+}
+.lista-profesores-container select,
+.lista-profesores-container input,
+.lista-estudiantes-container select,
+.lista-estudiantes-container input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 107, 102, 0.08);
+  background: #fff;
+}
+.tabla-profesores,
+.tabla-estudiantes,
+.lista-usuarios-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+/* table wrapper to avoid modal/content resize while typing */
+.table-scroll-wrapper {
+  max-height: 48vh;
+  min-height: 40vh; /* keep a stable visible area so modal doesn't shrink when filtering */
+  overflow-y: scroll; /* keep scrollbar present to avoid layout jump */
+  /* Reserve space for the scrollbar where supported; Safari/iOS don't support scrollbar-gutter, so
+     keep a generous padding-right as a compatible fallback to avoid layout shift. */
+  padding-right: 12px; /* fallback: reserve space for scrollbar */
+}
+
+/* Apply native scrollbar-gutter only on browsers that support it */
+@supports (scrollbar-gutter: stable) {
+  .table-scroll-wrapper {
+    scrollbar-gutter: stable both-edges;
+  }
+}
+.tabla-profesores th,
+.tabla-estudiantes th,
+.lista-usuarios-tabla th {
+  text-align: left;
+  padding: 10px 8px;
+  background: rgba(11, 107, 102, 0.03);
+  color: #0b5650;
+}
+.tabla-profesores td,
+.tabla-estudiantes td,
+.lista-usuarios-tabla td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(11, 107, 102, 0.04);
+}
+.tabla-profesores tbody tr:hover,
+.tabla-estudiantes tbody tr:hover {
+  background: rgba(11, 107, 102, 0.02);
+}
+.modal-editar-profesor input,
+.modal-editar-estudiante input,
+.modal-editar-profesor select {
+  padding: 8px;
+  margin: 6px 6px 0 0;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 107, 102, 0.08);
+}
+.modal-editar-profesor button,
+.modal-editar-estudiante button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(180deg, #2ea6b3, #0b6b66);
+  color: #fff;
+  font-weight: 700;
+}
+/* Action buttons inside the tablas (Editar / Eliminar lógico / Eliminar físico) */
+.tabla-profesores .action-btn {
+  display: inline-block;
+  margin: 6px 0;
+  padding: 6px 10px;
+  min-width: 120px;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgba(11, 107, 102, 0.08);
+  background: transparent;
+  color: #0b6b66;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease,
+    color 160ms ease;
+}
+.tabla-profesores .action-btn + .action-btn {
+  margin-left: 8px;
+}
+
+/* Variant: Edit */
+.tabla-profesores .action-btn.edit {
+  background: linear-gradient(
+    180deg,
+    rgba(47, 184, 176, 0.08),
+    rgba(42, 127, 163, 0.04)
+  );
+  border-color: rgba(11, 107, 102, 0.12);
+  color: #0b6b66;
+  box-shadow: 0 2px 6px rgba(11, 107, 102, 0.06);
+}
+.tabla-profesores .action-btn.edit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(11, 107, 102, 0.12);
+}
+
+/* Variant: Disable (soft warning) */
+.tabla-profesores .action-btn.disable {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 243, 224, 0.6),
+    rgba(255, 248, 240, 0.6)
+  );
+  border-color: rgba(241, 196, 15, 0.12);
+  color: #b36b00;
+}
+.tabla-profesores .action-btn.disable:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(179, 107, 0, 0.08);
+}
+
+/* Variant: Delete (danger) */
+.tabla-profesores .action-btn.delete {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 239, 239, 0.6),
+    rgba(255, 249, 249, 0.6)
+  );
+  border-color: rgba(192, 57, 43, 0.08);
+  color: #c0392b;
+}
+.tabla-profesores .action-btn.delete:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(192, 57, 43, 0.08);
+}
+.select-institucion {
+  min-width: 420px;
+}
+.lista-profesores-container .filters-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 8px;
+}
